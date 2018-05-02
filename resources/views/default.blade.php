@@ -51,7 +51,7 @@
 
         <!-- footer logo -->
         <div class="footer-logo">
-          <a href="index.html"><img src="{{URL::to('/')}}/../web-tutorin-fix/img/logo-alt.png" alt="logo"></a>
+          <a href="index.html"><img src="{{URL::to('/')}}/../web-tutorin-fix/img/logo1-alt.png" alt="logo"></a>
         </div>
         <!-- /footer logo -->
 
