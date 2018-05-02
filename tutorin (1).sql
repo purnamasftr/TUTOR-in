@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 02, 2018 at 02:05 PM
+-- Generation Time: Apr 21, 2018 at 03:02 PM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 7.1.1
 
@@ -87,17 +87,15 @@ CREATE TABLE `tutor` (
   `alamat_tutor` text NOT NULL,
   `fakultas_tutor` text NOT NULL,
   `jurusan_tutor` text NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tutor`
 --
 
-INSERT INTO `tutor` (`id_user_tutor`, `nama_tutor`, `email_tutor`, `password_tutor`, `alamat_tutor`, `fakultas_tutor`, `jurusan_tutor`, `created_at`, `updated_at`) VALUES
-(4, 'Melati Syahrini', 'incesmela@gmail.com', 'melati', 'Kos Ibu Wati', 'Fakultas Perikanan', 'MOBA', '2018-04-21 09:30:49', '2018-04-23 02:52:01'),
-(5, 'Melia Deby', 'meliadeb@gmail.com', 'hahaha', 'aldkjsaldj', 'FEMA', 'SKPM', '2018-04-25 05:53:41', '2018-04-25 05:53:41');
+INSERT INTO `tutor` (`id_user_tutor`, `nama_tutor`, `email_tutor`, `password_tutor`, `alamat_tutor`, `fakultas_tutor`, `jurusan_tutor`, `created_at`) VALUES
+(3, 'Karis Sariratna', 'karissenior@gmail.com', 'wanitanight', 'Berlin', 'Fakultas Ekonomi Managemen', 'Ekonomi Syariah', '2018-04-21 10:27:00');
 
 -- --------------------------------------------------------
 
@@ -112,16 +110,8 @@ CREATE TABLE `users` (
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `type` int(1) NOT NULL
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`, `type`) VALUES
-(2, 'melala', 'melati@gmail.com', '$2y$10$3xB1dmfdaDuF9ememdZETOzpEIoZvg1S1zG7bYx/S3W05n7WM.o/e', NULL, '2018-05-02 04:51:23', '2018-05-02 04:51:23', 2);
 
 --
 -- Indexes for dumped tables
@@ -180,12 +170,12 @@ ALTER TABLE `siswa`
 -- AUTO_INCREMENT for table `tutor`
 --
 ALTER TABLE `tutor`
-  MODIFY `id_user_tutor` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_user_tutor` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

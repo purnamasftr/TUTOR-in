@@ -19,3 +19,4 @@ Route::get('/web-login', array('uses' => 'WebController@WebLogin', 'as' => 'page
 Route::get('/user-home', 'UserController@User');
 
 Route::get('/blog', 'BlogController@index');
+
