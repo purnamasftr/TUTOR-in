@@ -11,8 +11,12 @@
 |
 */
 
-Route::get('admin-home', 'AdminController@AdminHome');
+Route::get('/', function () {
+    return view('welcome');
+});
 
-Route::get('admin-users', 'AdminController@AdminUser');
+Route::resource('tutor', 'TutorController');
 
-Route::get('web-home', 'WebController@WebHome');
+Auth::routes('');
+
+Route::get('/home', 'HomeController@index')->name('home');
