@@ -93,7 +93,7 @@
    @foreach ($kelas as $post)
      <tr>
        <td>{{ $post->id_matakuliah }}</td>
-       <td></td>
+       <td>{{ $post->nama_matkul }}</td>
        <td>{{ $post->harga }}</td>
        <td>{{ $post->ket }}</td>
 

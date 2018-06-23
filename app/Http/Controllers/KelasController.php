@@ -46,7 +46,10 @@ class KelasController extends Controller
      public function tabel()
      {
          $user = Auth::user()->id;
-         $kelas = DB::table('kelas')->select('id_kelas', 'id_tutor','id_matakuliah', 'harga', 'ket')->where('id_tutor', $user)->get();
+         $kelas = DB::table('kelas')->join('mata_kuliah', 'kelas.id_matakuliah','=', 'mata_kuliah.id_matakuliah')
+                                    ->select('kelas.*','mata_kuliah.nama_matkul')
+                                    ->where('kelas.id_tutor', $user)
+                                    ->get();
          $fak = DB::table('fakultas')->pluck('nama_fakultas', 'id_fakultas');
          return view('users.kelas', compact('kelas'), compact('fak'));
      }
