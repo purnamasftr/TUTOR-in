@@ -65,8 +65,8 @@
                             <label for="type" class="col-md-4 control-label">Tipe Akun</label>
 
                             <div class="col-md-6">
-                                <input id="type" type="radio" name="type" value="1" required> Tutor
-                                <input id="type" type="radio" name="type" value="2" required> Murid
+                                <input id="type" type="radio" name="type" value="1" required> Murid
+                                <input id="type" type="radio" name="type" value="2" required> Tutor
                             </div>
                             @if ($errors->has('type'))
                                 <span class="help-block">

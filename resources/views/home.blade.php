@@ -5,17 +5,23 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
+                <div class="panel-heading">Welcome</div>
+                @if( Auth::user()->type=='2' )
+                  <div class="panel-body">
+                    Selamat datang Tutor!
+                    Hello {{ Auth::user()->name }}
+                    Anda adalah {{ Auth::user()->type }}
+                                        <a class="btn btn-xs btn-primary" href="{{ route('users.index', Auth::user()->id) }}">profil</a>
+                  </div>
+                @else
+                  <div class="panel-body">
+                    Selamat datang Murid!
+                    Hello {{ Auth::user()->name }}
+                    Anda adalah {{ Auth::user()->type }}
+                    <a class="btn btn-xs btn-primary" href="{{ route('users.index', Auth::user()->id) }}">profil</a>
+                  </div>
+                @endif
 
-                <div class="panel-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    You are logged in!
-                </div>
             </div>
         </div>
     </div>

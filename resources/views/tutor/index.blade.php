@@ -36,7 +36,7 @@
 
     </tr>
 
-    @foreach ($tutor as $post)
+    @foreach ($fak as $post)
       <tr>
         <td>{{ ++$i }}</td>
         <td>{{ $post->id_user_tutor }}</td>
