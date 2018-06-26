@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 26, 2018 at 01:50 PM
+-- Generation Time: Jun 26, 2018 at 02:19 PM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 7.1.1
 
@@ -269,19 +269,21 @@ CREATE TABLE `users` (
   `departemen` text COLLATE utf8mb4_unicode_ci,
   `picture` text COLLATE utf8mb4_unicode_ci,
   `bio` text COLLATE utf8mb4_unicode_ci,
-  `tentang` text COLLATE utf8mb4_unicode_ci
+  `tentang` text COLLATE utf8mb4_unicode_ci,
+  `jadwal` text COLLATE utf8mb4_unicode_ci,
+  `pengalaman` text COLLATE utf8mb4_unicode_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`, `type`, `jk`, `telp`, `alamat`, `fakultas`, `departemen`, `picture`, `bio`, `tentang`) VALUES
-(2, 'Melati Aulia Putri', 'melati@gmail.com', '$2y$10$3xB1dmfdaDuF9ememdZETOzpEIoZvg1S1zG7bYx/S3W05n7WM.o/e', 'lzHtyD69hgytPTifEiD4CnS7UDHEFE1LqadmTAAZkiqslDAfMfCtzEik5UrM', '2018-05-02 04:51:23', '2018-06-26 03:46:05', 2, 'Perempuan', '08192813213', 'Perwira', 'P', 'PPKU', '', 'aku melaaa', 'haiiiiiiiiiii'),
-(3, 'Piped Ratnaputri', 'piped97@yahoo.com', '$2y$10$6T7rVR7K4EClswKo5IlMJ.teScDLy2wyHB022pyGfpFC1wZloE20K', 'IurXNb5G42mN2EctYvpytIdF1S4GoNAFDUdSN0bect09OSX32jsbdWvha8Qm', '2018-05-04 03:51:01', '2018-05-04 03:51:01', 1, '', '0', '', '', '', '', '', NULL),
-(4, 'Ratna Riskasari', 'ratnajunior@gmail.com', '$2y$10$7kBXHcgPs0eEHSIt6z6ivuKLZNGXpR5iqPVO1acnSfsclcpEfIu0K', 'jnENDNiknbPt1RhR2pHCvGcIgDmXDjF8fQ7MpMqnPrQAjkCX36O47R0VPyh6', '2018-05-04 03:51:51', '2018-05-04 03:51:51', 2, '', '0', '', '', '', '', '', NULL),
-(5, 'Wiandrini Anindita', 'wawdita@gmail.com', '$2y$10$ufmekE8D4iLPTdzKhFjlzud780MOONVDQusgayNQx7qvjN4JuI9om', 'G1GIxREkn2nzbLGyoCee37YG0nk3JCVUyemfMSfTkrd9I32rOa6BA7KKVrO7', '2018-06-26 02:44:18', '2018-06-26 02:58:34', 2, 'Perempuan', '08118728376', 'Russia', 'G', 'G6', NULL, 'hahahahhaaha', 'Saya tidak tahu.'),
-(6, 'Kania West', 'kania@gmail.com', '$2y$10$SyJU8CBhgFai2Mu89NdQ5OU3tkfW6BRHC7YFDspwXG/ik5xP24zre', '383ygTRubBLY2LYHiU7ufVnzM2hHMwYtDEgJiXBk96SyNcuggtPn03VRUDBs', '2018-06-26 03:03:55', '2018-06-26 03:10:12', 1, 'Perempuan', '081868263283', 'Dramaga Cantique', 'G', 'G6', NULL, NULL, NULL);
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`, `type`, `jk`, `telp`, `alamat`, `fakultas`, `departemen`, `picture`, `bio`, `tentang`, `jadwal`, `pengalaman`) VALUES
+(2, 'Melati Aulia Putri', 'melati@gmail.com', '$2y$10$3xB1dmfdaDuF9ememdZETOzpEIoZvg1S1zG7bYx/S3W05n7WM.o/e', 'lzHtyD69hgytPTifEiD4CnS7UDHEFE1LqadmTAAZkiqslDAfMfCtzEik5UrM', '2018-05-02 04:51:23', '2018-06-26 03:46:05', 2, 'Perempuan', '08192813213', 'Perwira', 'P', 'PPKU', '', 'aku melaaa', 'haiiiiiiiiiii', NULL, NULL),
+(3, 'Piped Ratnaputri', 'piped97@yahoo.com', '$2y$10$6T7rVR7K4EClswKo5IlMJ.teScDLy2wyHB022pyGfpFC1wZloE20K', 'IurXNb5G42mN2EctYvpytIdF1S4GoNAFDUdSN0bect09OSX32jsbdWvha8Qm', '2018-05-04 03:51:01', '2018-05-04 03:51:01', 1, '', '0', '', '', '', '', '', NULL, NULL, NULL),
+(4, 'Ratna Riskasari', 'ratnajunior@gmail.com', '$2y$10$7kBXHcgPs0eEHSIt6z6ivuKLZNGXpR5iqPVO1acnSfsclcpEfIu0K', 'jnENDNiknbPt1RhR2pHCvGcIgDmXDjF8fQ7MpMqnPrQAjkCX36O47R0VPyh6', '2018-05-04 03:51:51', '2018-05-04 03:51:51', 2, '', '0', '', '', '', '', '', NULL, NULL, NULL),
+(5, 'Wiandrini Anindita', 'wawdita@gmail.com', '$2y$10$ufmekE8D4iLPTdzKhFjlzud780MOONVDQusgayNQx7qvjN4JuI9om', 'G1GIxREkn2nzbLGyoCee37YG0nk3JCVUyemfMSfTkrd9I32rOa6BA7KKVrO7', '2018-06-26 02:44:18', '2018-06-26 02:58:34', 2, 'Perempuan', '08118728376', 'Russia', 'G', 'G6', NULL, 'hahahahhaaha', 'Saya tidak tahu.', NULL, NULL),
+(6, 'Kania West', 'kania@gmail.com', '$2y$10$SyJU8CBhgFai2Mu89NdQ5OU3tkfW6BRHC7YFDspwXG/ik5xP24zre', '75tWi9yJbvfwnPbfQSyjuLIDzVzrFyOTeHm5pOva4U9WkUVT6fPaJ8pQRXfy', '2018-06-26 03:03:55', '2018-06-26 03:10:12', 1, 'Perempuan', '081868263283', 'Dramaga Cantique', 'G', 'G6', NULL, NULL, NULL, NULL, NULL);
 
 --
 -- Indexes for dumped tables
