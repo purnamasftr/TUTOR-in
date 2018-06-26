@@ -16,8 +16,8 @@ Route::get('/web-home', 'WebController@WebHome');
 Route::get('/web-login', array('uses' => 'WebController@WebLogin', 'as' => 'pages.login'));
 
 /* UserController */
-Route::get('/user-home', 'UserController@UserHome');
-Route::get('/profil-tutor', 'UserController@ProfilTutor');
+Route::get('/user-home/{id}', 'UserController@UserHome');
+Route::get('/profil-tutor/{id}', 'UserController@ProfilTutor');
 Route::get('/cari-tutor',array('uses' => 'UserController@cariTutor', 'as' => 'pages.cari'));
 
 

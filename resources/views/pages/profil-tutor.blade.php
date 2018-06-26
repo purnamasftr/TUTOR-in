@@ -16,11 +16,11 @@
                                 <div class="card-two">
                                     <header>
                                         <div class="avatar">
-                                            <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="Allison Walker" />
+
                                         </div>
                                     </header>
 
-                                    <h3>Mochamad Suryono</h3>
+                                    <h3>{{$user -> name}}</h3>
                                           <div class="starrating risingstar d-flex justify-content-center flex-row-reverse">
                                               <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="5 star"></label>
                                               <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="4 star"></label>
@@ -29,8 +29,8 @@
                                               <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="1 star"></label>
                                           </div>
                                     <div class="desc">
-                                        Fakultas Matematika dan Ilmu Pengetahuan Alam
-                                        <br>Departemen Ilmu Komputer
+                                        {{$user -> fakultas}}
+                                        <br>Departemen {{$user -> departemen}}
                                         <br><br><a href="javascript:;" data-toggle="modal" data-target="#detail-pesan-modal" class="btn btn-success"> Pesan Tutor</a>
 
                                     </div>
@@ -47,7 +47,7 @@
                             <!-- Nav tabs -->
                             <ul class="nav nav-tabs profile-tab" role="tablist">
                                 <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#tentang" role="tab">Tentang</a> </li>
-                                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#pengalaman" role="tab">Pengalaman</a> </li>
+                                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#matakuliah" role="tab">Mata Kuliah</a> </li>
                                 <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#testimoni" role="tab">Testimoni</a> </li>
                             </ul>
                             <!-- Tab panes -->
@@ -59,100 +59,67 @@
                                       <div class="row">
                                           <div class="col-md-3 col-xs-6 b-r"> <strong>Nama Lengkap</strong>
                                               <br>
-                                              <p class="text-muted">John Deo</p>
+                                              <p class="text-muted">{{$user -> name}}</p>
                                           </div>
                                           <div class="col-md-3 col-xs-6 b-r"> <strong>Mobile</strong>
                                               <br>
-                                              <p class="text-muted">(+62) 81345678823</p>
+                                              <p class="text-muted">{{$user -> telp}}</p>
                                           </div>
                                           <div class="col-md-3 col-xs-6 b-r"> <strong>Email</strong>
                                               <br>
-                                              <p class="text-muted">oyon@gmail.com</p>
+                                              <p class="text-muted">{{$user -> email}}</p>
                                           </div>
                                           <div class="col-md-3 col-xs-6"> <strong>Location</strong>
                                               <br>
-                                              <p class="text-muted">Badoneng</p>
+                                              <p class="text-muted">{{$user -> alamat}}</p>
                                           </div>
                                       </div>
                                       <hr>
                                       <div class="col-md-3 col-xs-6 b-r"> <strong>Tentang Saya</strong></div>
-                                      <p class="m-t-30">Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.Cras dapibus. Vivamus
-                                          elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.</p>
-                                      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled
-                                          it to make a type specimen book. It has survived not only five centuries </p>
-                                      <p>It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                                      <p class="m-t-30">{{$user -> tentang}}
                                       </p>
                                       <hr>
-                                      <div class="col-md-3 col-xs-6 b-r"> <strong>Mata Kuliah</strong></div><br>
-                                      <div class="card-body">
-                                          <div class="table-responsive">
-                                              <table class="table">
-                                                  <thead>
-                                                      <tr>
-                                                          <th>No</th>
-                                                          <th>Departemen</th>
-                                                          <th>Mata Kuliah</th>
-                                                          <th>Tarif/jam</th>
-                                                      </tr>
-                                                  </thead>
-                                                  <tbody>
-                                                      <tr>
-                                                          <th scope="row">1</th>
-                                                          <td class="color-primary">Ilmu Komputer</td>
-                                                          <td class="color-primary">Dasar Pemrograman</td>
-                                                          <td class="color-primary">Rp 25.000</td>
-                                                      </tr>
-                                                      <tr>
-                                                          <th scope="row">2</th>
-                                                          <td class="color-primary">Ilmu Komputer</td>
-                                                          <td class="color-primary">Analisis Algoritme</td>
-                                                          <td class="color-primary">Rp 30.000</td>
-                                                      </tr>
-                                                      <tr>
-                                                          <th scope="row">3</th>
-                                                          <td class="color-primary">Ilmu Komputer</td>
-                                                          <td class="color-primary">Sistem Cerdas</td>
-                                                          <td class="color-primary">Rp 40.000</td>
-                                                      </tr>
-                                                  </tbody>
-                                              </table>
-                                          </div>
-                                      </div>
-                                      <hr>
-                                      <div class="col-md-3 col-xs-6 b-r"> <strong>Jadwal</strong></div><br>
-                                      <ul class="list-icons">
-                                          <li><h5><i class="fa fa-chevron-right"></i> <strong>Senin :</strong> 18.00 - 22.00</h5></li>
-                                          <li><h5><i class="fa fa-chevron-right"></i> <strong>Selasa :</strong> 18.00 - 22.00</h5></li>
-                                          <li><h5><i class="fa fa-chevron-right"></i> <strong>Rabu :</strong> 18.00 - 22.00</h5></li>
-                                          <li><h5><i class="fa fa-chevron-right"></i> <strong>Kamis :</strong> 18.00 - 22.00</h5></li>
-                                          <li><h5><i class="fa fa-chevron-right"></i> <strong>Jum'at :</strong> 18.00 - 22.00</h5></li>
-                                          <li><h5><i class="fa fa-chevron-right"></i> <strong>Sabtu :</strong> 18.00 - 22.00</h5></li>
-                                          <li><h5><i class="fa fa-chevron-right"></i> <strong>Minggu :</strong> 18.00 - 22.00</h5></li>
+                                      <div class="col-md-3 col-xs-6 b-r"> <strong>Pengalaman Mengajar</strong></div><br>
+                                      <h5>{{$user -> pengalaman}}</h5>
                                       </ul>
+                                      <hr>
+                                      <div class="col-md-3 col-xs-6 b-r"> <strong>Riwayat Pendidikan</strong></div><br>
+                                      <h5>{{$user -> riwayat}}</h5>
                                       <hr>
                                   </div>
                                 </div>
-                                <!--Tab Pengalaman-->
-                                <div class="tab-pane" id="pengalaman" role="tabpanel">
+                                <!--Tab Mata Kuliah-->
+                                <div class="tab-pane" id="matakuliah" role="tabpanel">
                                     <br>
                                     <div class="card-body">
                                       <div class="card-body">
-                                        <div class="col-md-3 col-xs-6 b-r"> <strong>Pengalaman Mengajar</strong></div><br>
-                                        <ul class="list-icons">
-                                            <li><h5><i class="fa fa-chevron-right"></i> Asisten Praktikum Mata Kuliah Komputasi Numerik 2017-2018</h5></li>
-                                            <li><h5><i class="fa fa-chevron-right"></i> Pengajar Foberkom Mata Kuliah Komputasi Numerik 2017-2018</h5></li>
-                                        </ul>
+                                        <div class="col-md-3 col-xs-6 b-r"> <strong>Mata Kuliah</strong></div><br>
+                                        <div class="card-body">
+                                            <div class="table-responsive">
+                                                <table class="table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Departemen</th>
+                                                            <th>Mata Kuliah</th>
+                                                            <th>Tarif/jam</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach ($kelas as $matkul)
+                                                        <tr>
+                                                            <td class="color-primary">{{$matkul -> nama_departemen}}</td>
+                                                            <td class="color-primary">{{$matkul -> nama_matkul}}</td>
+                                                            <td class="color-primary">{{$matkul -> harga}}</td>
+                                                        </tr>
+                                                        @endforeach
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
                                         <hr>
-                                        <div class="col-md-3 col-xs-6 b-r"> <strong>Riwayat Pendidikan</strong></div><br>
-                                        <dl>
-                                            <dt>2015-Sekarang</dt>
-                                            <dd>Program S1 Institut Pertanian Bogor Program Studi Ilmu Komputer</dd>
-                                            <dt>2012-2013</dt>
-                                            <dd>SMA</dd>
-                                            <dt>2009-2012</dt>
-                                            <dd>SMP</dd>
-                                        </dl>
-                                      </div>
+                                        <div class="col-md-3 col-xs-6 b-r"> <strong>Jadwal</strong></div><br>
+                                          {{$user -> jadwal}}
+                                        </div>
                                         <hr>
                                     </div>
                                 </div>
@@ -254,7 +221,7 @@
                                     <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="user" class="img-responsive radius" />
                                   </div>
                                   <div class="col-md-10 col-xs-12">
-                                    <h4> <strong>Mochamad Suryono</strong> </h4>
+                                    <h4> <strong>{{$user -> name}}</strong> </h4>
                                     <div class="starrating risingstar d-flex justify-content-start flex-row">
                                         <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="5 star"></label>
                                         <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="4 star"></label>
@@ -262,17 +229,18 @@
                                         <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="2 star"></label>
                                         <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="1 star"></label>
                                     </div>
-                                    <a> FMIPA </a>
-                                    <a> Ilmu Komputer </a>
+                                    <a> {{$user -> fakultas}} </a>
+                                    <a>Departemen {{$user -> departemen}} </a>
                                   </div>
                                 </div>
                             </div><br>
                             <div class="card-body">
                                 <label for="mata-kuliah">Mata Kuliah</label>
                                 <select class="form-control">
-                                  <option>Dasar Pemrograman - 25.000/jam</option>
-                                  <option>Analisis Algoritme - 40.000/jam</option>
-                                  <option>Sistem Cerdas - 50.000/jam</option>
+                                  <option>---select---</option>
+                                  @foreach($kelas as $matkul)
+                                  <option>{{$matkul -> nama_matkul}} - {{$matkul -> harga}}</option>
+                                  @endforeach
                                 </select>
                             </div><br>
                             <div class="card-body">

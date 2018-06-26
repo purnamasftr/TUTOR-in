@@ -20,7 +20,7 @@
                                         </div>
                                     </header>
 
-                                    <h3>Wiandrini Anindita</h3>
+                                    <h3>{{$user -> name}}</h3>
                                     <div class="desc">
                                         Fakultas Matematika dan Ilmu Pengetahuan Alam
                                         <br>Departemen Ilmu Komputer
