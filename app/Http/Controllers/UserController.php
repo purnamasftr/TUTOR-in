@@ -16,9 +16,7 @@ class UserController extends Controller
     }
     public function ProfilTutor($id)
     {
-      $user = User::whereId($id)->first()
-                                ->join
-      ;
+      $user = User::whereId($id)->first();
       $kelas = DB::table('kelas')->join('mata_kuliah', 'kelas.id_matakuliah','=', 'mata_kuliah.id_matakuliah')
                                  ->join('departemen', 'departemen.id_departemen','=', 'mata_kuliah.id_departemen')
                                  ->select('kelas.*','mata_kuliah.nama_matkul', 'departemen.nama_departemen')
@@ -29,5 +27,21 @@ class UserController extends Controller
     public function CariTutor()
     {
         return view('pages.cari-tutor');
+    }
+    public function EditKelas()
+    {
+        return view('kelas.edit-kelas');
+    }
+    public function EditProfil()
+    {
+        return view('users.edit-profil');
+    }
+    public function EditPengalaman()
+    {
+        return view('users.edit-pengalaman');
+    }
+    public function UbahSandi()
+    {
+        return view('users.ubah-sandi');
     }
 }

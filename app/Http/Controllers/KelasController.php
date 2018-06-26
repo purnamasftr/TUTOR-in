@@ -43,6 +43,7 @@ class KelasController extends Controller
      * @return \Illuminate\Http\Response
      */
      //kelas Management
+     
      public function tabel()
      {
          $user = Auth::user()->id;
