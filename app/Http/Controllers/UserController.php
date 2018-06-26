@@ -22,6 +22,13 @@ class UserController extends Controller
      */
     public function index()
     {
+        $id = Auth::user()->id;
+        $user = DB::table('users')->join('fakultas', 'fakultas.id_fakultas','=', 'users.fakultas')
+                                   ->select('users.*','fakultas.nama_fakultas')
+                                   ->where('users.id', $id)
+                                   ->get();
+
+
         return view('users.index', compact('user'));
     }
 
@@ -82,17 +89,21 @@ class UserController extends Controller
      {
          $this->validate(request(), [
              'name' => 'required',
+             'jk' => 'required',
              'telp' => 'required',
              'alamat' => 'required',
-             // 'fakultas' => 'required',
-             // 'departemen' => 'required'
+             'fakultas' => 'required',
+             'departemen' => 'required'
          ]);
 
          $user->name = request('name');
+         $user->jk = request('jk');
          $user->telp = request('telp');
          $user->alamat = request('alamat');
          $user->fakultas = request('fakultas');
          $user->departemen = request('departemen');
+         $user->bio = request('bio');
+         $user->tentang = request('tentang');
 
          $user->save();
 

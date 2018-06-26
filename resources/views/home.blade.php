@@ -11,14 +11,14 @@
                     Selamat datang Tutor!
                     Hello {{ Auth::user()->name }}
                     Anda adalah {{ Auth::user()->type }}
-                                        <a class="btn btn-xs btn-primary" href="{{ route('users.index', Auth::user()->id) }}">profil</a>
+                                        <a class="btn btn-xs btn-primary" href="{{ route('users.index') }}">profil</a>
                   </div>
                 @else
                   <div class="panel-body">
                     Selamat datang Murid!
                     Hello {{ Auth::user()->name }}
                     Anda adalah {{ Auth::user()->type }}
-                    <a class="btn btn-xs btn-primary" href="{{ route('users.index', Auth::user()->id) }}">profil</a>
+                    <a class="btn btn-xs btn-primary" href="{{ route('users.index') }}">profil</a>
                   </div>
                 @endif
 

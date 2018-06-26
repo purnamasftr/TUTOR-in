@@ -54,25 +54,35 @@
                             {{ method_field('patch') }}
                             <div class="col-xs-12">
                               <div class="form-group">
-                                <strong>Nama : </strong>
+                                <strong>Nama : </strong><br>
                                 <input type="text" name="name"  value="{{ $user->name }}" />
                               </div>
                             </div>
                             <div class="col-xs-12">
                               <div class="form-group">
-                                <strong>No HP : </strong>
+                                <strong>Jenis Kelamin : </strong><br>
+                                <select name="jk" class="form-control">
+                                    <option value="{{ $user->jk }}">--Jenis Kelamin--</option>
+                                    <option value="Laki-laki"> Laki-laki</option>
+                                    <option value="Perempuan"> Perempuan</option>
+                                </select>
+                              </div>
+                            </div>
+                            <div class="col-xs-12">
+                              <div class="form-group">
+                                <strong>No HP : </strong><br>
                                 <input type="text" name="telp"  value="{{ $user->telp }}" />
                               </div>
                             </div>
                             <div class="col-xs-12">
                               <div class="form-group">
-                                <strong>Alamat : </strong>
-                                <input type="text" name="alamat"  value="{{ $user->alamat }}" />
+                                <strong>Alamat : </strong><br>
+                                <textarea rows="2" cols="50" name="alamat">{{ $user->alamat }}</textarea>
                               </div>
                             </div>
                             <div class="form-group-sm">
 
-                                <div class="col-md-6">
+                                <div class="col-xs-12">
                                   <div class="form-group">
                                     <select name="fakultas" class="form-control">
                                         <option value="{{ $user->fakultas }}">--Select Fakultas--</option>
@@ -82,7 +92,7 @@
                                     </select>
                                   </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-xs-12">
                                   <div class="form-group">
                                     <select name="departemen" class="form-control">
                                      <option value="{{ $user->departemen }}">--Departemen--</option>
@@ -90,8 +100,22 @@
 
                                  </select>
                              </div><div class="col-md-2"><span id="loader"><i class="fa fa-spinner fa-3x fa-spin"></i></span></div>
-
-                         </div>
+                                @if( Auth::user()->type=='2' )
+                             <div class="col-xs-12">
+                               <div class="form-group">
+                                 <strong>Biodata Singkat : </strong><br>
+                                 <textarea rows="2" cols="50" name="bio">{{ $user->bio }}</textarea>
+                               </div>
+                             </div>
+                             <div class="form-group-sm">
+                             </div><div class="col-md-2"><span id="loader"><i class="fa fa-spinner fa-3x fa-spin"></i></span></div>
+                             <div class="col-xs-12">
+                               <div class="form-group">
+                                 <strong>Tentang Saya : </strong><br>
+                                 <textarea rows="4" cols="50" name="tentang"> {{ $user->tentang }}</textarea>
+                               </div>
+                             </div>
+                             @endif
                          <div class="col-xs-12">
                            <div class="form-group">
                              <a class="btn btn-xs btn-success" href="{{ route('users.index') }}">Back</a>
