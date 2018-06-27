@@ -14,11 +14,12 @@ class User extends Authenticatable
      *
      * @var array
      */
+    //$users =  App\User::all();
     protected $fillable = [
-        'name', 'email', 'password', 'type',
+        'name', 'email', 'password', 'type', 'jk', 'alamat', 'telp', 'fakultas', 'departemen', 'bio', 'tentang',
     ];
 
-  
+
 
     /**
      * The attributes that should be hidden for arrays.

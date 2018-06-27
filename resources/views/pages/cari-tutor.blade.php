@@ -1,6 +1,7 @@
 @extends('user-default')
+@section('content')
+@if( Auth::user()->type=='1' )
 
-        @section('content')
         <!-- Page wrapper  -->
         <div class="home-wrapper" style="height:1000px;">
             <!-- Container fluid  -->
@@ -14,49 +15,28 @@
                               <h4 class="text-primary" >Cari Tutormu Disini</h4>
                             </div>
                             <div class="card-body">
-                              <form>
+                              <form action="search" method="POST" role="search">
+                                  {{ csrf_field() }}
                                 <div class="form-row">
-                                    <select class="selectpicker" data-live-search="true" data-live-search-placeholder="Search" data-actions-box="true" data-width="400px">
-                                    <optgroup label="filter1">
-                                      <option>option1</option>
-                                      <option>option2</option>
-                                      <option>option3</option>
-                                      <option>option4</option>
-                                    </optgroup>
-                                    <optgroup label="filter2">
-                                      <option>option1</option>
-                                      <option>option2</option>
-                                      <option>option3</option>
-                                      <option>option4</option>
-                                    </optgroup>
-                                    <optgroup label="filter3">
-                                      <option>option1</option>
-                                      <option>option2</option>
-                                      <option>option3</option>
-                                      <option>option4</option>
-                                    </optgroup>
+                                  <select  name="fakultas" id="fakultas" class="form-control dynamic" data-live-search="true" data-live-search-placeholder="Search" data-actions-box="true" data-width="400px">
+                                    <option value="">--pilih fakultas--</option>
+                                    @foreach ($fak as $fakultas => $value)
+                                    <option value="{{ $fakultas }}"> {{ $value }}</option>
+                                    @endforeach
+                                  </select>
+                                  <select  name="departemen" id="departemen" class="form-control dynamic" data-live-search="true" data-live-search-placeholder="Search" data-actions-box="true" data-width="400px">
+                                    <option value="">--pilih departemen--</option>
+
+                                  </select>
+                                  <select  name="id_matakuliah"
+                          					placeholder="Search kelas" id="matkul" class="form-control dynamic" data-live-search="true" data-live-search-placeholder="Search" data-actions-box="true" data-width="400px">
+                                    <option value="">--pilih matakuliah--</option>
+
                                   </select>
 
-                                  <select class="selectpicker" data-live-search="true" data-live-search-placeholder="Search" data-actions-box="true" data-width="400px">
-                                    <option>option1</option>
-                                    <option>option2</option>
-                                    <option>option3</option>
-                                    <option>option4</option>
-                                  </optgroup>
-                                  <optgroup label="filter2">
-                                    <option>option1</option>
-                                    <option>option2</option>
-                                    <option>option3</option>
-                                    <option>option4</option>
-                                  </optgroup>
-                                  <optgroup label="filter3">
-                                    <option>option1</option>
-                                    <option>option2</option>
-                                    <option>option3</option>
-                                    <option>option4</option>
-                                  </optgroup>
-                                  </select>
-                                  <button class="btn btn-success" type="button">Cari Tutor</button>
+                                  <button type="submit" class="btn btn-default">cari
+                        						<span class="glyphicon glyphicon-search"></span>
+                        					</button>
                                 </div>
                               </form>
                               <form>
@@ -96,4 +76,5 @@
             </div>
         <!-- End Page wrapper  -->
         </div>
-    @endsection
+  @endif
+  @endsection

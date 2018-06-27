@@ -22,8 +22,8 @@
 
                             <h3>{{$user -> name}}</h3>
                             <div class="desc">
-                                {{$user -> fakultas}}
-                                <br>{{$user -> departemen}}
+                                Fakultas {{$user -> fakultas}}
+                                <br> Departemen{{$user -> departemen}}
                                 <br>{{$user -> type}}
                             </div>
 

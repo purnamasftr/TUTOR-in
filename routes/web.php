@@ -17,11 +17,38 @@ Route::get('/home', function () {
 });
 Route::get('/home', 'HomeController@mytut');
 Route::get('/userhome','UserHomeController@UserHome')->name('pages.userhome');
-// Route::get('/userhome/{id?}', function() {
-//     return redirect()->route('pages.userhome', ['id' => Auth::user()->id]);
-// });
+Route::get('/cari-tutor',array('uses' => 'UserHomeController@CariTutor', 'as' => 'pages.cari-tutor'));
 
-Route::get('/cari-tutor',array('uses' => 'UserHomeController@cariTutor', 'as' => 'pages.cari-tutor'));
+Route::any('/search',function(){
+    $q = Input::get ( 'id_matakuliah' );
+
+    $user = DB::table('kelas')->where('id_matakuliah','LIKE','%'.$q.'%')->get();
+
+    if(count($user) > 0){
+        return view('pages.hasil-cari')->withDetails($user)->withQuery ( $q );
+    }
+    else
+        return view ('pages.hasil-cari')->withMessage('No Details found. Try to search again !');
+});
+Route::get('users/edit-profil',['as' => 'users.edit-profil', 'uses' => 'UserController@EditProfil']);
+Route::get('users/edit-pengalaman',['as' => 'users.edit-pengalaman', 'uses' => 'UserController@EditPengalaman']);
+Route::get('users/ubah-sandi',['as' => 'users.ubah-sandi', 'uses' => 'UserController@UbahSandi']);
+
+Route::get('id_matakuliah/get/{id}', 'HomeController@getMatkul');
+Route::get('departemen/get/{id}', 'HomeController@getDept');
+
+
+Route::resource('kelas', 'KelasController');
+Route::get('kelas/{id}',  'KelasController@destroy');
+Route::get('kelas/{id}/edit',  ['as' => 'kelas.edit', 'uses' => 'KelasController@edit']);
+Route::patch('kelas/{id}/update',  ['as' => 'kelas.update', 'uses' => 'KelasController@update']);
+Route::get('users/edit-kelas',['as' => 'kelas.edit-kelas', 'uses' => 'UserController@EditKelas']);
+
+
+
+Route::get('/show', function () {
+    return view('show');
+});
 
 
 //Route::get('/webhome', 'WebhomeController@WebHome');
@@ -35,20 +62,6 @@ Auth::logout();
 
 // Route::get('search', 'CariController@search');
 // Route::get('show', 'CariController@show');
-Route::any('/search',function(){
-    $q = Input::get ( 'q' );
-
-    $user = User::where('type', '=', 2)->where('name','LIKE','%'.$q.'%')->get();
-
-    if(count($user) > 0){
-        return view('result')->withDetails($user)->withQuery ( $q );
-    }
-    else
-        return view ('result')->withMessage('No Details found. Try to search again !');
-});
-Route::get('/show', function () {
-    return view('show');
-});
 
 
 Route::get('autocomplete',array('as'=>'autocomplete','uses'=>'AutoCompleteController@index'));
