@@ -9,20 +9,21 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="{{URL::to('/')}}/../user-tutor/images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{URL::to('/')}}/../public/images/favicon.png">
     <title>TUTOR-in</title>
     <!-- Bootstrap Core CSS -->
-    <link href="{{URL::to('/')}}/../user-tutor/css/lib/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="{{asset('css/lib/bootstrap/bootstrap.min.css')}}" rel="stylesheet">
     <!-- Custom CSS -->
-    <link href="{{URL::to('/')}}/../user-tutor/css/bootstrap-select.min.css" rel="stylesheet">
-    <link href="{{URL::to('/')}}/../user-tutor/css/helper.css" rel="stylesheet">
-    <link href="{{URL::to('/')}}/../user-tutor/css/style.css" rel="stylesheet">
+    <link href="{{asset('css/bootstrap-select.min.css')}}" rel="stylesheet">
+    <link href="{{asset('css/helper.css')}}" rel="stylesheet">
+    <link href="{{asset('css/style.css')}}" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:** -->
     <!--[if lt IE 9]>
     <script src="https:**oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https:**oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
+
 </head>
 
 <body class="fix-header">
@@ -37,9 +38,9 @@
             <nav class="navbar top-navbar navbar-expand-md navbar-light">
                 <!-- Logo -->
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="index.html">
+                    <a class="navbar-brand" href="{{ url('/home') }}">
                         <!-- Logo icon -->
-                        <img src="{{URL::to('/')}}/../web-tutorin-fix/img/logo1.png" class="img-fluid" alt="Responsive image">
+                        <img src="{{asset('img/logo1.png')}}" class="img-fluid" alt="Responsive image">
                         <!--End Logo icon -->
                     </a>
                 </div>
@@ -93,13 +94,25 @@
                         <!-- Profile -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-muted  " href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img src="{{URL::to('/')}}/../user-tutor/images/users/5.jpg" alt="user" class="profile-pic" /></a>
+                            <img src="{{asset('images/users/5.jpg')}}" alt="user" class="profile-pic" /></a>
                             <div class="dropdown-menu dropdown-menu-right animated zoomIn">
                                 <ul class="dropdown-user">
-                                    <li><a href="#"><i class="ti-home"></i> Beranda</a></li>
-                                    <li><a href="#"><i class="ti-settings"></i> Profil Saya</a></li>
+                                    <li><a href="{{ url('/userhome') }}"><i class="ti-home"></i> Beranda</a></li>
+                                    <li><a href="{{ route('users.edit-profil') }}"><i class="ti-settings"></i> Profil Saya</a></li>
                                     <li role="separator" class="divider"></li>
-                                    <li><a href="#"><i class="fa fa-power-off"></i> Logout</a></li>
+                                        <li>
+                                            <a href="{{ route('logout') }}"
+                                                onclick="event.preventDefault();
+                                                         document.getElementById('logout-form').submit();">
+                                                <i class="fa fa-power-off"></i>
+                                                Logout
+                                            </a>
+
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                {{ csrf_field() }}
+                                            </form>
+                                        </li>
+                                    </li>
                                 </ul>
                             </div>
                         </li>
@@ -124,7 +137,7 @@
                 <br>
                 <!-- footer logo -->
                 <div class="default-footer-logo">
-                  <a href="index.html"><img src="{{URL::to('/')}}/../web-tutorin-fix/img/logo1-alt.png" alt="logo"></a>
+                  <a href="{{ url('/home') }}"><img src="{{asset('img/logo1-alt.png')}}" alt="logo"></a>
                 </div>
                 <!-- /footer logo -->
 
@@ -150,22 +163,24 @@
 
         <!-- End Wrapper -->
         <!-- All Jquery -->
-        <script src="{{URL::to('/')}}/../user-tutor/js/lib/jquery/jquery.min.js"></script>
+        <script src="{{asset('js/lib/jquery/jquery.min.js')}}"></script>
         <!-- Bootstrap tether Core JavaScript -->
-        <script src="{{URL::to('/')}}/../user-tutor/js/lib/bootstrap/js/popper.min.js"></script>
-        <script src="{{URL::to('/')}}/../user-tutor/js/lib/bootstrap/js/bootstrap.min.js"></script>
-        <script src="{{URL::to('/')}}/../user-tutor/js/lib/form-validation/jquery.validate.min.js"></script>
-        <script src="{{URL::to('/')}}/../user-tutor/js/lib/form-validation/jquery.validate.unobtrusive.min.js"></script>
-        <script src="{{URL::to('/')}}/../user-tutor/js/lib/jquery.nicescroll/jquery.nicescroll.min.js"></script>
+        <script src="{{asset('js/lib/bootstrap/js/popper.min.js')}}"></script>
+        <script src="{{asset('js/lib/bootstrap/js/bootstrap.min.js')}}"></script>
+        <script src="{{asset('js/lib/form-validation/jquery.validate.min.js')}}"></script>
+        <script src="{{asset('js/lib/form-validation/jquery.validate.unobtrusive.min.js')}}"></script>
+        <script src="{{asset('js/lib/jquery.nicescroll/jquery.nicescroll.min.js')}}"></script>
         <!-- slimscrollbar scrollbar JavaScript -->
-        <script src="{{URL::to('/')}}/../user-tutor/js/jquery.slimscroll.js"></script>
+        <script src="{{asset('js/jquery.slimscroll.js')}}"></script>
         <!--Menu sidebar -->
-        <script src="{{URL::to('/')}}/../user-tutor/js/sidebarmenu.js"></script>
+        <script src="{{asset('js/sidebarmenu.js')}}"></script>
         <!--stickey kit -->
-        <script src="{{URL::to('/')}}/../user-tutor/js/lib/sticky-kit-master/dist/sticky-kit.min.js"></script>
+        <script src="{{asset('js/lib/sticky-kit-master/dist/sticky-kit.min.js')}}"></script>
         <!--Custom JavaScript -->
-        <script src="{{URL::to('/')}}/../user-tutor/js/bootstrap-select.min.js"></script>
-        <script src="{{URL::to('/')}}/../user-tutor/js/custom.min.js"></script>
+        <script src="{{ asset('js/bootstrap-select.min.js') }}"></script>
+        <script src="{{ asset('js/custom.min.js') }}"></script>
+        <script src="{{ asset('js/custom.js') }}"></script>
+
           <script>
               $(function(){
                 $("html").niceScroll({
@@ -174,8 +189,9 @@
                     background:"#fff",
                     cursorborder:"1px solid #5c4ac7",
                     cursorborderradius:0
-                    });  // a world f
+                  });  //public
               });
           </script>
+
     </body>
   </html>

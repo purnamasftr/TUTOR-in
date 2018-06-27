@@ -7,7 +7,6 @@
             <div class="container-fluid">
 
                 <!-- Start Page Content -->
-                <!-- Start Page Content -->
                 <div class="row">
                     <!-- Column -->
                     <div class="col-lg-12">
@@ -16,14 +15,14 @@
                                 <div class="card-two">
                                     <header>
                                         <div class="avatar">
-                                            <img src="https://randomuser.me/api/portraits/women/21.jpg" alt="Allison Walker" />
+                                            <img src="https://randomuser.me/api/portraits/women/21.jpg"/>
                                         </div>
                                     </header>
 
                                     <h3>{{$user -> name}}</h3>
                                     <div class="desc">
-                                        Fakultas Matematika dan Ilmu Pengetahuan Alam
-                                        <br>Departemen Ilmu Komputer
+                                        {{$user -> fakultas}}
+                                        <br>Departemen {{$user -> departemen}}
                                     </div>
 
                                 </div>
@@ -240,7 +239,8 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">Terima</button>
+                    <button type="submit" class="btn btn-danger">Hapus Kelas</button>
+                    <button type="submit" class="btn btn-success">Terima</button>
                     </div>
                 </form>
           </div>
@@ -294,10 +294,25 @@
                                   </div>
                                 </div>
                               </div>
+                              <div class="card-body collapse" id="collapseExample">
+                                <div class="card">
+                                  <label>Testimoni</label>
+                                  <div>
+                                    <form method="post">
+                                        <div>
+                                            <textarea class="textarea_editor form-control" rows="5" placeholder="Say Something Nice!" style="height:100px"></textarea>
+                                        </div>
+                                        <br><button class="btn btn-info">Kirim Testimoni</button>
+                                    </form>
+                                  </div>
+                                </div>
+                              </div>
                           </div>
                       </div>
                       <div class="modal-footer">
+                          <button class="btn btn-success" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Beri Testimoni</button>
                       </div>
+
                   </form>
             </div>
           </div>

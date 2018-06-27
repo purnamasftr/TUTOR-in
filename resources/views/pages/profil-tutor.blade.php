@@ -132,21 +132,16 @@
                                                 <div class="sl-left"> <img src="{{URL::to('/')}}/../user-tutor/images/users/avatar-2.jpg" alt="user" class="img-circle" /> </div>
                                                 <div class="sl-right">
                                                     <div> <a href="#" class="link">Velia Deby Rahmawati</a> <span class="sl-date">17 September 2017</span>
-                                                      <div class="starrating risingstar d-flex justify-content-start flex-row">
-                                                          <input type="radio" id="testi-star5" name="rating" value="5" /><label for="star5" title="5 star"></label>
-                                                          <input type="radio" id="testi-star4" name="rating" value="4" /><label for="star4" title="4 star"></label>
-                                                          <input type="radio" id="testi-star3" name="rating" value="3" /><label for="star3" title="3 star"></label>
-                                                          <input type="radio" id="testi-star2" name="rating" value="2" /><label for="star2" title="2 star"></label>
-                                                          <input type="radio" id="testi-star1" name="rating" value="1" /><label for="star1" title="1 star"></label>
+                                                      <div>
+                                                          <small>Mata Kuliah : <cite title="Source Title">Analisis Algoritme</cite></small>
                                                       </div>
-                                                        <div class="m-t-20 row">
-                                                            <div class="col-md-3 col-xs-12"><img src="{{URL::to('/')}}/../user-tutor/images/big/img1.jpg" alt="user" class="img-responsive radius" /></div>
+                                                      <div class="m-t-20 row">
                                                             <div class="col-md-9 col-xs-12">
                                                                 <blockquote class="m-t-10"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. </blockquote>
-                                                        </div>
+                                                            </div>
+                                                      </div>
                                                     </div>
                                                 </div>
-                                            </div>
                                             <hr>
                                             <div class="sl-item">
                                                 <div class="sl-left"> <img src="{{URL::to('/')}}/../user-tutor/images/users/avatar-3.jpg" alt="user" class="img-circle" /> </div>

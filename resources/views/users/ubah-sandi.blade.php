@@ -18,9 +18,11 @@
                                 <div class="button-list">
                                   <div class="btn-group-vertical">
                                       <button type="button" onclick="window.location='{{ route('users.edit-profil') }}'" class="btn btn-success">Profil</button>
+                                      <button type="button" onclick="window.location='{{ route('users.ubah-sandi') }}'" class="btn btn-success">Ubah Password</button>
+                                      @if( Auth::user()->type=='2' )
                                       <button type="button" onclick="window.location='{{ route('kelas.edit-kelas') }}'" class="btn btn-success">Kelas</button>
                                       <button type="button" onclick="window.location='{{ route('users.edit-pengalaman') }}'" class="btn btn-success">Pengalaman</button>
-                                      <button type="button" onclick="window.location='{{ route('users.ubah-sandi') }}'" class="btn btn-success">Ubah Kata Sandi</button>
+                                      @endif
                                   </div>
                                 </div>
                               </div>
