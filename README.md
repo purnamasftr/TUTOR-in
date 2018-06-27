@@ -2,6 +2,12 @@
 
 [Latar Belakang](#latar-belakang) | [Permasalahan](#permasalahan) | [Konfigurasi](#konfigurasi) | [Maintenance](#maintenance) | [Otomatisasi](#otomatisasi) |  [Cara Pemakaian](#cara-pemakaian) | [Pembahasan](#pembahasan) | [Referensi](#referensi)
 
+# Latar Belakang
+[`^ kembali ke atas ^`](#)
+
+  Institut Pertanian Bogor (IPB) merupakan salah satu kampus yang memungkinkan banyak mahasiswa dari departemen manapun dapat mengambil suatu mata kuliah yang berasal dari departemen lainnya. Pada umumnya, mahasiswa pasti memiliki kesulitan dalam memahami suatu mata kuliah tertentu. Belajar bersama kerap dilakukan agar dapat menguasai mata kuliah tersebut.
+	Beberapa mahasiswa terlihat sangat menguasai suatu mata kuliah dan beberapa mahasiswa lainnya terlihat kesulitan dalam memahami suatu mata kuliah, sehingga memerlukan tutor untuk membimbingnya agar lebih memahami mata kuliah yang tidak dimengerti. Namun, terbatasnya penyedia jasa tutor suatu mata kuliah bagi mahasiswa IPB menjadi salah satu faktor sulitnya mahasiswa dalam mencari bantuan pembelajaran mata kuliah tertentu. 
+Tutor-in dibuat untuk menghubungkan antara mahasiswa yang dapat menjadi tutor mata kuliah tertentu dengan mahasiswa yang membutuhkan bantuan pembelajaran. Dengan adanya website ini, proses belajar mengajar dapat lebih mudah dilakukan.
 
 
 
