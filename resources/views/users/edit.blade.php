@@ -1,3 +1,5 @@
+@extends('user-default')
+@section('content')
 <html>
 <head>
     <title>Edit Profile</title>
@@ -139,3 +141,4 @@
  <script src="{{ asset('js/custom.js') }}"></script>
 </body>
 </html>
+@endsection

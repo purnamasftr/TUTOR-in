@@ -1,3 +1,5 @@
+@extends('user-default')
+@section('content')
 @if( Auth::user()->type=='2' )
 <head>
     <title>Kelas</title>
@@ -39,7 +41,7 @@ visibility:hidden;
          <input type = "hidden" name = "id_tutor" value = "{{Auth::user()->id}}">
         <div class="col-md-12">
           <div class="form-group">
-            <select name="fakultas" class="form-control dynamic">
+            <select name="fakultas" id="fakultas" class="form-control dynamic">
                 <option value="">--Select Fakultas--</option>
                 @foreach ($fak as $fakultas => $value)
                 <option value="{{ $fakultas }}"> {{ $value }}</option>
@@ -49,14 +51,14 @@ visibility:hidden;
         </div>
         <div class="col-md-12">
           <div class="form-group">
-            <select name="departemen" class="form-control dynamic">
+            <select name="departemen" id="departemen" class="form-control dynamic">
              <option>--Departemen--</option>
            </div>
          </select>
      </div>
      <div class="col-md-12">
        <div class="form-group">
-         <select name="id_matakuliah" class="form-control dynamic">
+         <select name="id_matakuliah" id="matkul" class="form-control dynamic">
           <option>--Mata Kuliah--</option>
         </div>
       </select>
@@ -80,7 +82,7 @@ visibility:hidden;
      </div>
      <div class="col-xs-12">
        <div class="form-group">
-         <a class="btn btn-xs btn-success" href="{{ route('home') }}">Back</a>
+         <a class="btn btn-xs btn-success" href="{{ route('users.index')}}">Back</a>
          <button class="btn btn-xs btn-primary" type="submit">Send</button>
        </div>
      </div>
@@ -90,6 +92,7 @@ visibility:hidden;
    <tr>
      <th>Kode</th>
      <th>Mata Kuliah</th>
+     <th>Departemen</th>
      <th>Harga</th>
      <th>Keterangan</th>
      <th width="300px">Action</th>
@@ -100,6 +103,7 @@ visibility:hidden;
      <tr>
        <td>{{ $post->id_matakuliah }}</td>
        <td>{{ $post->nama_matkul }}</td>
+       <td>{{ $post->nama_departemen }}</td>
        <td>{{ $post->harga }}</td>
        <td>{{ $post->ket }}</td>
 
@@ -126,3 +130,4 @@ Sorry, this page is not available :(.
 <br>
 <a class="btn btn-xs btn-success" href="{{ route('home') }}">Return to Home</a>
 @endif
+@endsection

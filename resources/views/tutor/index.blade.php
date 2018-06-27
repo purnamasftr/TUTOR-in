@@ -1,62 +1,46 @@
-@extends('tutor.master')
+@extends('layouts.app')
 
 @section('content')
-  <div class="row">
-    <div class="col-lg-12">
-      <h3>Simple CRUD</h3>
-  </div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">Welcome</div>
+                @if( Auth::user()->type=='2' )
+                  <div class="panel-body">
+                    Selamat datang Tutor!
+                    Hello {{ Auth::user()->name }}
+                    Anda adalah {{ Auth::user()->type }}
+                  <a class="btn btn-xs btn-primary" href="{{ route('users.index') }}">profil</a>
+                  </div>
+                @else
+                  <div class="panel-body">
+                    Selamat datang Murid!
+                    Hello {{ Auth::user()->name }}
+                    Anda adalah {{ Auth::user()->type }}
+                    <a class="btn btn-xs btn-primary" href="{{ route('users.index') }}">profil</a>
+                    List Tutor:
+                    <table class="table table-bordered">
+                      <tr>
+                        <th>Nama</th>
+                        <th>Action</th>
+                      </tr>
 
-  <div class="row">
-    <div class="col-sm-12">
-      <div class="pull-right">
-        <a class="btn btn-xs btn-success" href="{{ route('tutor.create') }}">Create New Tutor</a>
-      </div>
+                      @foreach ($tutor as $post)
+                        <tr>
+                          <td>{{ $post->name }}</td>
+                          <td>
+                            <a class="btn btn-xs btn-primary" href="">Tutorin!</a>
+
+                          </td>
+                        </tr>
+                      @endforeach
+                    </table>
+                  </div>
+                @endif
+
+            </div>
+        </div>
     </div>
-  </div>
-
-
-  @if($message = Session::get('success'))
-    <div class="alert alert-success">
-      <p>{{ $message }}</p>
-    </div>
-  @endif
-
-  <table class="table table-bordered">
-    <tr>
-      <th>No.</th>
-      <th>id_user_tutor</th>
-      <th>Nama</th>
-      <th>Email</th>
-      <th>Password</th>
-      <th>Alamat</th>
-      <th>Fakultas</th>
-      <th>Jurusan</th>
-      <th>Waktu masuk</th>
-      <th width="300px">Action</th>
-
-    </tr>
-
-    @foreach ($fak as $post)
-      <tr>
-        <td>{{ ++$i }}</td>
-        <td>{{ $post->id_user_tutor }}</td>
-        <td>{{ $post->nama_tutor }}</td>
-        <td>{{ $post->email_tutor }}</td>
-        <td>{{ $post->password_tutor }}</td>
-        <td>{{ $post->alamat_tutor }}</td>
-        <td>{{ $post->fakultas_tutor }}</td>
-        <td>{{ $post->jurusan_tutor }}</td>
-        <td>{{ $post->created_at }}</td>
-        <td>
-          <a class="btn btn-xs btn-primary" href="{{ route('tutor.edit', $post->id_user_tutor) }}">Edit</a>
-
-          {!! Form::open(['method' => 'DELETE', 'route'=>['tutor.destroy', $post->id_user_tutor], 'style'=> 'display:inline']) !!}
-          {!! Form::submit('Delete', ['class'=> 'btn btn-xs btn-danger']) !!}
-          {!! Form::close() !!}
-        </td>
-      </tr>
-    @endforeach
-  </table>
-
-  {!! $tutor->links() !!}
+</div>
 @endsection

@@ -1,5 +1,4 @@
-@extends('layouts.app')
-
+@extends('user-default')
 @section('content')
 <div class="container">
     <div class="row">
@@ -11,7 +10,7 @@
                     Selamat datang Tutor!
                     Hello {{ Auth::user()->name }}
                     Anda adalah {{ Auth::user()->type }}
-                                        <a class="btn btn-xs btn-primary" href="{{ route('users.index') }}">profil</a>
+                  <a class="btn btn-xs btn-primary" href="{{ route('users.index') }}">profil</a>
                   </div>
                 @else
                   <div class="panel-body">
@@ -19,6 +18,23 @@
                     Hello {{ Auth::user()->name }}
                     Anda adalah {{ Auth::user()->type }}
                     <a class="btn btn-xs btn-primary" href="{{ route('users.index') }}">profil</a>
+                    List Tutor:
+                    <table class="table table-bordered">
+                      <tr>
+                        <th>Nama</th>
+                        <th>Action</th>
+                      </tr>
+
+                      @foreach ($tutor as $post)
+                        <tr>
+                          <td>{{ $post->name }}</td>
+                          <td>
+                            <a class="btn btn-xs btn-primary" href="{{ route('tutorin.daftar', $post->id) }}">Tutorin!</a>
+
+                          </td>
+                        </tr>
+                      @endforeach
+                    </table>
                   </div>
                 @endif
 

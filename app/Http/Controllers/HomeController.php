@@ -44,4 +44,6 @@ class HomeController extends Controller
       $matkul = DB::table('mata_kuliah')->where('id_departemen',$id)->pluck("nama_matkul", 'id_matakuliah');
       return json_encode($matkul);
     }
+
+
 }

@@ -24,7 +24,8 @@ class KelasController extends Controller
     {
       $user = Auth::user()->id;
       $kelas = DB::table('kelas')->join('mata_kuliah', 'kelas.id_matakuliah','=', 'mata_kuliah.id_matakuliah')
-                                 ->select('kelas.*','mata_kuliah.nama_matkul')
+                                ->join('departemen', 'departemen.id_departemen', '=', 'mata_kuliah.id_departemen')
+                                 ->select('kelas.*','mata_kuliah.nama_matkul', 'departemen.nama_departemen')
                                  ->where('kelas.id_tutor', $user)
                                  ->get();
 
