@@ -8,5 +8,5 @@ class Kelas extends Authenticatable
 {
     protected $table = 'kelas';
     protected $primaryKey = 'id_kelas';
-    protected $fillable = ['id_tutor', 'id_matakuliah', 'harga', 'ket'];
+    protected $fillable = ['id_tutor', 'id_matakuliah', 'harga'];
 }

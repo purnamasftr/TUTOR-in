@@ -35,10 +35,16 @@ class HomeController extends Controller
         return view('home');
     }
 
-    public function mytut()
+    public function getDept($id)
     {
-      $tut = DB::table('tutor')->pluck('nama_tutor', 'id_user_tutor');
-      return view('home', compact('tut'));
+      $dept = DB::table('departemen')->where('id_fakultas',$id)->pluck("nama_departemen", 'id_departemen');
+      return json_encode($dept);
+    }
+
+    public function getMatkul($id)
+    {
+      $matkul = DB::table('mata_kuliah')->where('id_departemen',$id)->pluck("nama_matkul", 'id_matakuliah');
+      return json_encode($matkul);
     }
 
     public function showChangePasswordForm(){

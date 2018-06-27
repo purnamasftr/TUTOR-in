@@ -21,20 +21,12 @@
                                     </header>
 
                                     <h3>{{$user -> name}}</h3>
-                                          <div class="starrating risingstar d-flex justify-content-center flex-row-reverse">
-                                              <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="5 star"></label>
-                                              <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="4 star"></label>
-                                              <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="3 star"></label>
-                                              <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="2 star"></label>
-                                              <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="1 star"></label>
-                                          </div>
                                     <div class="desc">
-                                        {{$user -> fakultas}}
+                                        Fakultas {{$user -> fakultas}}
                                         <br>Departemen {{$user -> departemen}}
                                         <br><br><a href="javascript:;" data-toggle="modal" data-target="#detail-pesan-modal" class="btn btn-success"> Pesan Tutor</a>
 
                                     </div>
-
                                 </div>
                             </div>
                         </div>
@@ -199,7 +191,7 @@
     <div class="modal"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" id="detail-pesan-modal">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
-                <form action="javascript:;" novalidate="novalidate">
+
                     <div class="modal-header">
                       <h4 class="modal-title text-center">Detail Pesan Tutor</h4>
                       <button type="button btn-md" class="close" data-dismiss="modal" aria-label="Close">
@@ -208,7 +200,9 @@
 
                     </div>
                     <div class="modal-body">
-                        <div class="">
+                      <form method="post" action="{{route('member.store')}}">
+                        {{ csrf_field() }}
+
                             <div class="card-body">
                                 <label for="detail-tutor">Detail Tutor</label>
                                 <div class="m-t-20 row">
@@ -217,41 +211,33 @@
                                   </div>
                                   <div class="col-md-10 col-xs-12">
                                     <h4> <strong>{{$user -> name}}</strong> </h4>
-                                    <div class="starrating risingstar d-flex justify-content-start flex-row">
-                                        <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="5 star"></label>
-                                        <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="4 star"></label>
-                                        <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="3 star"></label>
-                                        <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="2 star"></label>
-                                        <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="1 star"></label>
-                                    </div>
-                                    <a> {{$user -> fakultas}} </a>
+                                    <a> Fakultas {{$user -> fakultas}} </a>
                                     <a>Departemen {{$user -> departemen}} </a>
                                   </div>
                                 </div>
                             </div><br>
+                            <input type="hidden" name="id_tutor" value="{{$user -> id}}"/>
+                            <input type="hidden" name="id_siswa" value="{{Auth::user() -> id}}"/>
+                            <input type="hidden" name="status" value="1"/>
                             <div class="card-body">
+                              <div class="form-group">
                                 <label for="mata-kuliah">Mata Kuliah</label>
-                                <select class="form-control">
+                                <select class="form-control" name='id_kelas'>
                                   <option>---select---</option>
                                   @foreach($kelas as $matkul)
-                                  <option>{{$matkul -> nama_matkul}} - {{$matkul -> harga}}</option>
+                                  <option value='{{$matkul -> id_kelas}}'>{{$matkul -> nama_matkul}} - {{$matkul -> harga}}</option>
                                   @endforeach
                                 </select>
+                              </div>
                             </div><br>
                             <div class="card-body">
                               <label for="pesan-tambahan">Pesan Tambahan</label>
-                              <div>
-                                <form method="post">
-                                    <div class="form-group">
-                                        <textarea class="textarea_editor form-control" rows="5" placeholder="Enter text ..." style="height:100px"></textarea>
-                                    </div>
-                                </form>
+                              <div class="form-group">
+                                  <textarea name="pesan" class="textarea_editor form-control" rows="5" placeholder="Enter text ..." style="height:100px"></textarea>
                               </div>
                             </div>
-                        </div>
-                    </div>
                     <div class="modal-footer">
-                      <div class="sweetalert m-t-15">
+                      <div>
                           <button type="submit" class="btn btn-success">Pesan Tutor</button>
                       </div>
                     </div>

@@ -20,11 +20,18 @@ class KelasController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    // public function index()
-    // {
-    //     $kelas = Kelas::latest()->paginate(5);
-    //     return view('users.edit', compact('kelas'))->with('i',(request()->input('page',1) -1) *5);
-    // }
+    public function index()
+    {
+      $user = Auth::user()->id;
+      $kelas = DB::table('kelas')->join('mata_kuliah', 'kelas.id_matakuliah','=', 'mata_kuliah.id_matakuliah')
+                                ->join('departemen', 'departemen.id_departemen', '=', 'mata_kuliah.id_departemen')
+                                 ->select('kelas.*','mata_kuliah.nama_matkul', 'departemen.nama_departemen')
+                                 ->where('kelas.id_tutor', $user)
+                                 ->get();
+
+      $fak = DB::table('fakultas')->pluck('nama_fakultas', 'id_fakultas');
+      return view('kelas.index', compact('kelas'), compact('fak'));
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -45,24 +52,18 @@ class KelasController extends Controller
      //kelas Management
      public function tabel()
      {
-         $user = Auth::user()->id;
-         $kelas = DB::table('kelas')->join('mata_kuliah', 'kelas.id_matakuliah','=', 'mata_kuliah.id_matakuliah')
-                                    ->select('kelas.*','mata_kuliah.nama_matkul')
-                                    ->where('kelas.id_tutor', $user)
-                                    ->get();
-         $fak = DB::table('fakultas')->pluck('nama_fakultas', 'id_fakultas');
-         return view('users.kelas', compact('kelas'), compact('fak'));
+
      }
 
      public function store(Request $request)
      {
        request()->validate([
-         'id_tutor' => 'required',
          'id_matakuliah' => 'required',
          'harga' => 'required',
        ]);
+
        Kelas::create($request->all());
-       return back();
+       return redirect()->back();
      }
 
     /**
@@ -85,8 +86,9 @@ class KelasController extends Controller
      */
     public function edit($id_kelas)
     {
-      $post = Kelas::find($id_kelas);
-      return view('users.edit')->withPost($post);
+      $kelas = Kelas::find($id_kelas);
+      // return view('kelas.edit')->withPost($kelas);
+      return view('kelas.edit', compact('kelas'));
     }
 
     /**
@@ -96,15 +98,13 @@ class KelasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id_kelas)
+    public function update(Request $kelas, $id_kelas)
     {
       request()->validate([
-        'id_matakuliah' => 'required',
         'harga' => 'required',
-        'ket' => 'required',
     ]);
-      Kelas::find($id_kelas)->update($request->all());
-      return redirect()->route('users.edit')->with('success','Kelas updated successfully');
+      Kelas::find($id_kelas)->update($kelas->all());
+      return redirect()->route('kelas.index')->with('success','Profile updated successfully');
     }
 
     /**

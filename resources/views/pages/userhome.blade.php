@@ -2,7 +2,7 @@
 
 @section('content')
 <!-- Page wrapper  -->
-<div class="home-wrapper">
+<div class="home-wrapper" style="height:1000px;">
     <!-- Container fluid  -->
     <div class="container-fluid">
 
@@ -22,9 +22,9 @@
 
                             <h3>{{$user -> name}}</h3>
                             <div class="desc">
-                                {{$user -> fakultas}}
-                                <br>{{$user -> departemen}}
-                                <br>{{$user -> type}}
+                                {{Auth::user() -> fakultas}}
+                                <br>{{Auth::user() -> departemen}}
+                                <br>{{Auth::user() -> type}}
                             </div>
 
                         </div>
@@ -37,7 +37,7 @@
                 <div class="card">
 
                     <!-- Nav tabs -->
-                    @if( $user->type=='2' )
+                    @if( Auth::user() -> type=='2' )
                         <ul class="nav nav-tabs profile-tab" role="tablist">
                             <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#kelas-aktif" role="tab">Kelas Aktif</a> </li>
                             <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#permintaan-tutor" role="tab">Permintaan Tutor</a> </li>
@@ -45,6 +45,7 @@
                         </ul>
                         <div class="tab-content">
                             <div class="tab-pane" id="kelas-aktif" role="tabpanel">
+                              @foreach($aktif_s as $aktifs)
                               <div class="card-body">
                                 <div class="card-body">
                                   <div class="m-t-20 row">
@@ -52,17 +53,25 @@
                                       <img src="https://randomuser.me/api/portraits/women/3.jpg" alt="user" class="img-responsive radius" />
                                     </div>
                                     <div class="col-md-10 col-xs-12">
-                                      <h2> <strong>Perilaku Konsumen</strong> </h2>
-                                      <h4> Murid : Velia Deby Rachmawati</strong> </h4>
-                                      <a href="javascript:;" data-toggle="modal" data-target="#detail-kelas-modal" class="btn btn-success"> Lihat Detail</a>
+                                      <h2> <strong>{{$aktifs->nama_matkul}}</strong> </h2>
+                                      <h4> Murid : {{$aktifs->name}}</strong> </h4>
+                                      <form method="post" action="{{route('member.update', $aktifs -> id_member)}}">
+                                        {{ csrf_field() }}
+                                        {{ method_field('patch') }}
+                                        <input type="hidden" value="3" name="status"/>
+                                        <button class="btn btn-primary"> Selesai</a>
+                                      </form>
                                     </div>
                                   </div>
                                 </div>
                                   <hr>
                                 </div>
+                                @endforeach
                               </div>
+
                             <!--Tab Permintaan Tutor-->
                             <div class="tab-pane" id="permintaan-tutor" role="tabpanel">
+                              @foreach($pending_s as $tunda_siswa)
                                 <div class="card-body">
                                   <div class="card-body">
                                     <div class="m-t-20 row">
@@ -70,17 +79,31 @@
                                         <img src="https://randomuser.me/api/portraits/women/3.jpg" alt="user" class="img-responsive radius" />
                                       </div>
                                       <div class="col-md-10 col-xs-12">
-                                        <h2> <strong>Perilaku Konsumen</strong> </h2>
-                                        <h4> Murid : Velia Deby Rachmawati</strong> </h4>
-                                        <a href="javascript:;" data-toggle="modal" data-target="#detail-kelas-modal" class="btn btn-success"> Lihat Detail</a>
+                                        <h2> <strong>{{$tunda_siswa -> id_matakuliah}}</strong> </h2>
+                                        <h4> Murid : {{$tunda_siswa -> name}}</strong> </h4>
+                                        <form method="post" action="{{route('member.update', $tunda_siswa -> id_member)}}">
+                                          {{ csrf_field() }}
+                                          {{ method_field('patch') }}
+                                          <input type="hidden" value="2" name="status"/>
+                                          <button class="btn btn-success"> Terima</a>
+                                        </form>
+                                        <form method="post" action="{{route('member.update', $tunda_siswa -> id_member)}}">
+                                          {{ csrf_field() }}
+                                          {{ method_field('patch') }}
+                                          <input type="hidden" value="4" name="status"/>
+                                          <button class="btn btn-danger"> Tolak</a>
+                                        </form>
                                       </div>
                                     </div>
                                   </div>
                                     <hr>
                                 </div>
+                              @endforeach
                             </div>
                             <!--Histori Kelas-->
+
                             <div class="tab-pane" id="histori-kelas" role="tabpanel">
+                                @foreach($histori_s as $hists)
                                 <div class="card-body">
                                   <div class="card-body">
                                     <div class="m-t-20 row">
@@ -88,222 +111,106 @@
                                         <img src="https://randomuser.me/api/portraits/women/3.jpg" alt="user" class="img-responsive radius" />
                                       </div>
                                       <div class="col-md-10 col-xs-12">
-                                        <h2> <strong>Perilaku Konsumen</strong> </h2>
-                                        <h4> Murid : Velia Deby Rachmawati</strong> </h4>
-                                        <a href="javascript:;" data-toggle="modal" data-target="#detail-kelas-modal" class="btn btn-success"> Lihat Detail</a>
+                                        <h2> <strong>{{$hists->nama_matkul}}</strong> </h2>
+                                        <h4> Murid : {{$hists->name}}</strong> </h4>
                                       </div>
                                     </div>
                                   </div>
                                     <hr>
                                 </div>
+                              @endforeach
                             </div>
-                          </div>
-                          <div class="modal"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" id="detail-kelas-modal">
-                          <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                  <form action="javascript:;" novalidate="novalidate">
-                                      <div class="modal-header">
-                                        <h4 class="modal-title text-center">Detail Kelas</h4>
-                                        <button type="button btn-md" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
 
-                                      </div>
-                                      <div class="modal-body">
-                                          <div class="">
-                                              <div class="card-body">
-                                                  <label for="detail-murid">
-                                                      Detail Murid
-                                                  </label>
-                                                  <div class="m-t-20 row">
-                                                    <div class="col-md-2 col-xs-12">
-                                                      <img src="https://randomuser.me/api/portraits/women/3.jpg" alt="user" class="img-responsive radius" />
-                                                    </div>
-                                                    <div class="col-md-10 col-xs-12">
-                                                      <h4> <strong>Velia Deby Rahmawati</strong> </h4>
-                                                      <a> FMIPA </a>
-                                                      <a> Ilmu Komputer </a>
-                                                    </div>
-                                                  </div>
-                                              </div>
-                                              <div class="card-body">
-                                                <div class="m-t-20 row">
-                                                  <div class="col-md-6">
-                                                    <label for="mata-kuliah">
-                                                        Mata Kuliah
-                                                    </label>
-                                                    <div class="alert alert-info">
-                                                        PERILAKU KONSUMEN
-                                                    </div>
-                                                  </div>
-                                                  <div class="col-md-6">
-                                                    <label for="mata-kuliah">
-                                                        Tarif per Jam
-                                                    </label>
-                                                    <div class="alert alert-info">
-                                                        Rp 25.000
-                                                    </div>
-                                                  </div>
-                                                </div>
-                                              </div>
-                                              <div class="card-body">
-                                                <label for="pesan-tambahan">
-                                                    Pesan Tambahan
-                                                </label>
-                                                <div>
-                                                    <p class="text-muted m-b-15"> Saya bersama 4 teman lainnya, harga bisa didiskusikan?</p>
-                                                </div>
-                                              </div>
-                                          </div>
-                                      </div>
-                                      <div class="modal-footer">
-                                      <button type="submit" class="btn btn-primary">Terima</button>
-                                      </div>
-                                  </form>
-                            </div>
-                          </div>
-                          </div>
+                        </div>
+
 
                     @else
                         <ul class="nav nav-tabs profile-tab" role="tablist">
                             <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#tutor-aktif" role="tab">Tutor Aktif</a> </li>
-                            <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#pengajuan-tutor" role="tab">Pengajuan Tutor</a> </li>
+                            <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#pengajuan-tutor" role="tab">Pengajuan Tutor</a> </li>
                             <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#histori-tutor" role="tab">Histori Tutor</a> </li>
                         </ul>
                         <div class="tab-content">
+                          <!-- Tab Tutor Aktif -->
                           <div class="tab-pane" id="tutor-aktif" role="tabpanel">
+                            @if ($acc->count())
+                            @foreach($acc as $diterima)
                             <div class="card-body">
                               <div class="m-t-20 row">
                                 <div class="col-md-2 col-xs-12">
-                                  <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="user" class="img-responsive radius" />
+                                  <img src='/storage/avatars/{{$diterima -> picture}}' class="img-responsive radius" />
                                 </div>
                                 <div class="col-md-10 col-xs-12">
-                                  <h2> <strong>Perilaku Konsumen</strong> </h2>
-                                  <h4> Tutor : Mochamad Suryono</strong> </h2>
-                                  <a href="javascript:;" data-toggle="modal" data-target="#detail-tutor-modal" class="btn btn-success"> Lihat Detail</a>
+                                  <h2> <strong>{{$diterima -> nama_matkul}}</strong> </h2>
+                                  <h4> Tutor : {{$diterima -> name}}</strong> </h2>
                                 </div>
-
                               </div>
                               <hr>
-                              <div class="text-center">
-                                <p class=" text-center text-muted m-b-20"> Anda belum memiliki Tutor</p>
-                                  <img src="{{URL::to('/')}}/../user-tutor/images/sad-gray.png" class="center" />
-                              </div>
-                              <br>
                             </div>
-                            <hr>
-                          </div>
-                        <!-- Tab Pengajuan Tutor -->
-                        <div class="tab-pane active" id="pengajuan-tutor" role="tabpanel">
-                            <div class="card-body">
-                              <div class="m-t-20 row">
-                                <div class="col-md-2 col-xs-12">
-                                  <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="user" class="img-responsive radius" />
-                                </div>
-                                <div class="col-md-10 col-xs-12">
-                                  <h2> <strong>Perilaku Konsumen</strong> </h2>
-                                  <h4> Tutor : Mochamad Suryono</strong> </h2>
-                                    <a href="javascript:;" data-toggle="modal" data-target="#detail-tutor-modal" class="btn btn-success"> Lihat Detail</a>
-                                </div>
-                              </div>
-                            </div>
-                            <hr>
+                            @endforeach
+                            @else
                             <div class="text-center">
                               <p class=" text-center text-muted m-b-20"> Anda belum memiliki Tutor</p>
-                              <img src="{{URL::to('/')}}/../user-tutor/images/sad-gray.png" class="center" />
-                              <br><br>
-                              <button type="button" onclick="window.location='{{ route('pages.cari-tutor') }}'" class="btn btn-success"><i class="ti-plus"></i>Cari Tutor</button>
+                                <img src="{{asset('images/sad-gray.png')}}" class="center" />
                             </div>
-
-                            <hr>
-                        </div>
-                        <!-- Tab Histori Tutor -->
-                        <div class="tab-pane" id="histori-tutor" role="tabpanel">
+                            @endif
+                          </div>
+                          <!-- Tab Pengajuan Tutor -->
+                          <div class="tab-pane" id="pengajuan-tutor" role="tabpanel">
+                            @if ($pending->count())
+                            @foreach($pending as $ditunda)
                             <div class="card-body">
                               <div class="m-t-20 row">
                                 <div class="col-md-2 col-xs-12">
-                                  <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="user" class="img-responsive radius" />
+                                  <img src='/storage/avatars/{{$ditunda -> picture}}' class="img-responsive radius" />
                                 </div>
                                 <div class="col-md-10 col-xs-12">
-                                  <h2> <strong>Perilaku Konsumen</strong> </h2>
-                                  <h4> Tutor : Mochamad Suryono</strong> </h2>
-                                    <a href="javascript:;" data-toggle="modal" data-target="#detail-tutor-modal" class="btn btn-success"> Lihat Detail</a>
+                                  <h2> <strong>{{$ditunda -> nama_matkul}}</strong> </h2>
+                                  <h4> Tutor : {{$ditunda -> name}}</strong> </h2>
+                                  <form method="post" action="{{route('member.update', $ditunda -> id_member)}}">
+                                    {{ csrf_field() }}
+                                    {{ method_field('patch') }}
+                                    <input type="hidden" value="4" name="status"/>
+                                    <button data-toggle="modal" data-target="" class="btn btn-danger">Batalkan</button>
+                                  </form>
                                 </div>
                               </div>
                               <hr>
-                              <div class="text-center">
-                                <p class=" text-center text-muted m-b-20v"> Anda belum memiliki Tutor</p>
-                                <img src="{{URL::to('/')}}/../user-tutor/images/sad-gray.png" class="center" />
-                              </div>
-                              <br>
                             </div>
-                            <hr>
-                        </div>
-                      </div>
-
-                      <div class="modal"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" id="detail-tutor-modal">
-                        <div class="modal-dialog" role="document">
-                          <div class="modal-content">
-                                <form action="javascript:;" novalidate="novalidate">
-                                    <div class="modal-header">
-                                      <h4 class="modal-title text-center">Detail Tutor</h4>
-                                      <button type="button btn-md" class="close" data-dismiss="modal" aria-label="Close">
-                                          <span aria-hidden="true">&times;</span>
-                                      </button>
-
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="">
-                                            <div class="card-body">
-                                                <label for="detail-murid">
-                                                    Detail Tutor
-                                                </label>
-                                                <div class="m-t-20 row">
-                                                  <div class="col-md-2 col-xs-12">
-                                                    <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="user" class="img-responsive radius" />
-                                                  </div>
-                                                  <div class="col-md-10 col-xs-12">
-                                                    <h4> <strong>Mochamad Suryono</strong> </h4>
-                                                    <a> FMIPA </a>
-                                                    <a> Ilmu Komputer </a>
-                                                  </div>
-                                                </div>
-                                            </div>
-                                            <div class="card-body">
-                                              <div class="m-t-20 row">
-                                                <div class="col-md-6">
-                                                  <label for="mata-kuliah">
-                                                      Mata Kuliah
-                                                  </label>
-                                                  <div class="alert alert-info">
-                                                      PERILAKU KONSUMEN
-                                                  </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                  <label for="mata-kuliah">
-                                                      Tarif per Jam
-                                                  </label>
-                                                  <div class="alert alert-info">
-                                                      Rp 25.000
-                                                  </div>
-                                                </div>
-                                              </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                    </div>
-                                </form>
+                            @endforeach
+                            @else
+                              <div class="text-center">
+                                <p class=" text-center text-muted m-b-20"> Anda belum memiliki Tutor</p>
+                                <img src="{{asset('images/sad-gray.png')}}" class="center" />
+                                <br><br>
+                              </div>
+                              @endif
+                              <div class="text-center">
+                                <button type="button" onclick="window.location='{{ route('pages.cari-tutor') }}'" class="btn btn-success"><i class="ti-plus"></i>Cari Tutor</button>
+                              </div>
+                          </div>
+                          <!-- Tab Histori Tutor -->
+                          <div class="tab-pane" id="histori-tutor" role="tabpanel">
+                            @foreach($histori as $hist)
+                            <div class="card-body">
+                            <div class="card-body">
+                              <div class="m-t-20 row">
+                                <div class="col-md-2 col-xs-12">
+                                  <img src='/storage/avatars/{{$hist -> picture}}' class="img-responsive radius" />
+                                </div>
+                                <div class="col-md-10 col-xs-12">
+                                  <h2> <strong>{{$hist -> nama_matkul}}</strong> </h2>
+                                  <h4> Tutor : {{$hist -> name}}</strong> </h2>
+                                </div>
+                              </div>
+                              <hr>
+                            </div>
+                          </div>
+                            @endforeach
                           </div>
                         </div>
-                      </div>
 
                     @endif
-
-                    <!-- Tab panes -->
-
-                        <!-- Tab Murid -->
-                        <!-- Tab Tutor Aktif -->
 
                 </div>
 

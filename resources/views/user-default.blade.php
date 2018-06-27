@@ -26,7 +26,7 @@
 
 </head>
 
-<body class="fix-header">
+<body class="fix-header fix-sidebar">
     <!-- Preloader - style you can find in spinners.css -->
     <div class="preloader">
         <svg class="circular" viewBox="25 25 50 50">
@@ -106,8 +106,7 @@
                                                          document.getElementById('logout-form').submit();">
                                                 <i class="fa fa-power-off"></i>
                                                 Logout
-                                            </a>
-
+                                             </a>
                                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                                 {{ csrf_field() }}
                                             </form>
