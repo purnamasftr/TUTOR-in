@@ -1,21 +1,16 @@
 <?php
-
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\User;
 use App\Item;
-
-
 class UserController extends Controller
 {
-
     public function __construct()
     {
         $this->middleware('auth');
     }
-
     /**
     * Display a listing of the resource.
     *
@@ -28,11 +23,8 @@ class UserController extends Controller
                                    ->select('users.*','fakultas.nama_fakultas')
                                    ->where('users.id', $id)
                                    ->get();
-
-
         return view('users.index', compact('user'));
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -42,7 +34,6 @@ class UserController extends Controller
     {
         //
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -53,19 +44,16 @@ class UserController extends Controller
     // {
     //     //
     // }
-
     /**
      * Display the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-
     public function show($id)
         {
             //
         }
-
     /**
     * Show the form for editing the specified resource.
     *
@@ -76,16 +64,9 @@ class UserController extends Controller
      {
          $user = Auth::user();
          $fak = DB::table('fakultas')->pluck('nama_fakultas', 'id_fakultas');
-
-         return view('users.edit', compact('user'), compact('fak'), compact('kelas'));
+         return view('users.edit-profil', compact('user'), compact('fak'));
      }
-     public function edit_profil(User $user)
-     {
-         $user = Auth::user();
-         $fak = DB::table('fakultas')->pluck('nama_fakultas', 'id_fakultas');
 
-         return view('users.edit-profil', compact('user','fak'));
-     }
 
      /**
      * Update the specified resource in storage.
@@ -104,7 +85,6 @@ class UserController extends Controller
              'fakultas' => 'required',
              // 'departemen' => 'required'
          ]);
-
          $user->name = request('name');
          $user->jk = request('jk');
          $user->telp = request('telp');
@@ -112,12 +92,14 @@ class UserController extends Controller
          $user->fakultas = request('fakultas');
          $user->departemen = request('departemen');
          $user->bio = request('bio');
-         $user->tentang = request('tentang');
+         $user->tentang = request('tentang');;
+         $user->pengalaman = request('pengalaman');
+         $user->riwayat = request('riwayat');
 
          $user->save();
-
          return redirect()->route('users.edit-profil')->with('success','Profile updated successfully');
      }
+
 
      /**
      * Remove the specified resource from storage.
@@ -129,13 +111,11 @@ class UserController extends Controller
       {
           //
       }
-
       public function getDept($id)
       {
         $dept = DB::table('departemen')->where('id_fakultas',$id)->pluck("nama_departemen", 'id_departemen');
         return json_encode($dept);
       }
-
       //kelas Management
       public function tabel()
       {
@@ -144,7 +124,6 @@ class UserController extends Controller
         $fak = DB::table('fakultas')->pluck('nama_fakultas', 'id_fakultas');
         return view('users.kelas', compact('kelas'), compact('fak'));
       }
-
       public function store(Request $request)
       {
         request()->validate([
@@ -155,22 +134,17 @@ class UserController extends Controller
       Kelas::create($request->all());
       return redirect()->route('users.index');
       }
-
-
     public function read(User $user)
     {
       $user = Auth::user();
       $tut = DB::table('tutor')->pluck('nama_tutor', 'id_user_tutor');
-
       return view('users.read', compact('user'), compact('tut'));
     }
-
     public function UserHome($id)
     {
       $user = User::whereId($id)->first();
       return view('pages.user-home', compact('user'));
     }
-
     public function ProfilTutor($id)
     {
       $user = User::whereId($id)->first();
@@ -181,27 +155,22 @@ class UserController extends Controller
                                  ->get();
       return view('pages.profil-tutor', compact('user'), compact('kelas'));
     }
-
     public function CariTutor()
     {
         return view('pages.cari-tutor');
     }
-
     public function EditKelas()
     {
         return view('kelas.edit-kelas');
     }
-
     // public function EditProfil()
     // {
     //     return view('users.edit-profil');
     // }
-
     public function EditPengalaman()
     {
         return view('users.edit-pengalaman');
     }
-
     public function UbahSandi()
     {
         return view('users.ubah-sandi');

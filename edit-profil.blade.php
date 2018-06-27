@@ -30,11 +30,10 @@
                               <div class="card-toggle-body">
                                 <div class="button-list">
                                   <div class="btn-group-vertical">
-                                      <button type="button" onclick="window.location='{{ route('users.edit', Auth::user()->id)}}'" class="btn btn-success">Profil</button>
+                                      <button type="button" onclick="window.location='{{ route('users.edit-profil', Auth::user()->id)}}'" class="btn btn-success">Profil</button>
                                       <button type="button" onclick="window.location='{{ route('users.ubah-sandi') }}'" class="btn btn-success">Ubah Password</button>
                                       @if( Auth::user()->type=='2' )
                                       <button type="button" onclick="window.location='{{ route('kelas.edit-kelas') }}'" class="btn btn-success">Kelas</button>
-                                      <button type="button" onclick="window.location='{{ route('users.edit-pengalaman') }}'" class="btn btn-success">Pengalaman</button>
                                       @endif
                                   </div>
                                 </div>
@@ -50,6 +49,7 @@
                                    <div class="basic-form">
                                        <form method="POST" action="{{route('users.update', $user)}}">
                                          {{ csrf_field() }}
+                                         {{ method_field('patch') }}
                                          <div class="col-md-5">
                                             <div class="text-center">
                                               <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5OXzJk62g-Kl3rwfBcKq0jllmtlM-4u68cNcW599fWrUVl708" class="avatar img-circle" alt="avatar">
@@ -113,15 +113,21 @@
                                            <label for="tentang">Tentang Saya</label>
                                            <textarea rows="4" cols="65" name="tentang"> {{ $user->tentang }}</textarea>
                                          </div>
-                                         @endif
 
                                          <div class="form-group">
-                                             <label>Foto KTM</label>
-                                             <input type="file" class="form-control" id="foto_ktm">
+                                             <label>Pengalaman Mengajar</label>
+                                             <textarea rows="4" cols="65" name="pengalaman" rows="3" >{{ $user->pengalaman }}</textarea>
                                          </div>
 
                                          <div class="form-group">
-                                           <a class="btn btn-success" href="{{ route('users.index') }}">Back</a>
+                                             <label>Riwayat Pendidikan</label>
+                                             <textarea rows="4" cols="65" name="riwayat" rows="3">{{ $user->riwayat }}</textarea>
+                                         </div>
+                                         @endif
+
+
+                                         <div class="form-group">
+                                           <a class="btn btn-success" href="{{ route('pages.userhome') }}">Back</a>
                                            <button class="btn btn-primary" type="submit">Send</button>
                                          </div>
 
