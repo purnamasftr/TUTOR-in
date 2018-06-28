@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 02, 2018 at 02:05 PM
+-- Generation Time: Jun 26, 2018 at 02:19 PM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 7.1.1
 
@@ -35,14 +35,162 @@ CREATE TABLE `admin` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `departemen`
+--
+
+CREATE TABLE `departemen` (
+  `id_departemen` varchar(4) NOT NULL,
+  `nama_departemen` varchar(50) NOT NULL,
+  `id_fakultas` varchar(2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `departemen`
+--
+
+INSERT INTO `departemen` (`id_departemen`, `nama_departemen`, `id_fakultas`) VALUES
+('', '', ''),
+('G1', 'Statistika', 'G'),
+('G2', 'Geofisika dan Meteorologi', 'G'),
+('G3', 'Biologi', 'G'),
+('G4', 'Kimia', 'G'),
+('G5', 'Matematika', 'G'),
+('G6', 'Ilmu Komputer', 'G'),
+('G7', 'Fisika', 'G'),
+('G8', 'Biokimia', 'G'),
+('PPKU', 'Program Pendidikan Kompetisi Umum', 'P');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `fakultas`
+--
+
+CREATE TABLE `fakultas` (
+  `id_fakultas` varchar(2) NOT NULL,
+  `nama_fakultas` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `fakultas`
+--
+
+INSERT INTO `fakultas` (`id_fakultas`, `nama_fakultas`) VALUES
+('A', 'Fakultas Pertanian'),
+('B', 'Fakultas Kedokteran Hewan'),
+('A', 'Fakultas Pertanian'),
+('B', 'Fakultas Kedokteran Hewan'),
+('C', 'Fakultas Perikanan'),
+('D', 'Fakultas Peternakan'),
+('E', 'Fakultas Kehutanan'),
+('F', 'Fakultas Teknik Pertanian'),
+('G', 'Fakultas Matematika dan Ilmu Pengetahuan Alam'),
+('H', 'Fakultas Ekonomi dan Manajemen'),
+('I', 'Fakultas Ekologi Manusia'),
+('J', 'D3/Vokasi'),
+('K', 'Sekolah Bisnis'),
+('C', 'Fakultas Perikanan'),
+('D', 'Fakultas Peternakan'),
+('E', 'Fakultas Kehutanan'),
+('F', 'Fakultas Teknik Pertanian'),
+('G', 'Fakultas Matematika dan Ilmu Pengetahuan Alam'),
+('H', 'Fakultas Ekonomi dan Manajemen'),
+('I', 'Fakultas Ekologi Manusia'),
+('J', 'D3/Vokasi'),
+('K', 'Sekolah Bisnis'),
+('P', 'PPKU'),
+('P', 'PPKU');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `kelas`
 --
 
 CREATE TABLE `kelas` (
+  `id_kelas` int(12) NOT NULL,
   `id_tutor` int(11) NOT NULL,
-  `id_siswa` int(11) NOT NULL,
-  `status` int(11) NOT NULL,
-  `materi` int(11) NOT NULL
+  `id_matakuliah` varchar(12) NOT NULL,
+  `harga` varchar(20) NOT NULL,
+  `ket` text,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `kelas`
+--
+
+INSERT INTO `kelas` (`id_kelas`, `id_tutor`, `id_matakuliah`, `harga`, `ket`, `created_at`, `updated_at`) VALUES
+(1, 2, 'IPB100', '10000', 'huehue', '2018-06-22 12:42:15', '2018-06-26 03:52:52'),
+(2, 2, 'KOM101', '20000', NULL, '2018-06-22 07:52:13', '2018-06-22 07:52:13'),
+(6, 1, 'STK211', '5', '1', '2018-06-23 02:05:09', '0000-00-00 00:00:00'),
+(8, 2, 'IPB102', '3', NULL, '2018-06-23 00:43:39', '2018-06-23 00:43:39'),
+(10, 2, 'BIO100', '12', NULL, '2018-06-23 00:47:51', '2018-06-23 00:47:51'),
+(15, 2, 'IPB108', '22', NULL, '2018-06-23 09:16:52', '2018-06-23 09:16:52'),
+(17, 2, 'FIS100', '20000', 'hahaha', '2018-06-23 10:21:33', '2018-06-23 10:21:33');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `mata_kuliah`
+--
+
+CREATE TABLE `mata_kuliah` (
+  `id_matakuliah` varchar(8) NOT NULL,
+  `nama_matkul` varchar(50) NOT NULL,
+  `id_fakultas` varchar(2) NOT NULL,
+  `id_departemen` varchar(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `mata_kuliah`
+--
+
+INSERT INTO `mata_kuliah` (`id_matakuliah`, `nama_matkul`, `id_fakultas`, `id_departemen`) VALUES
+('AGB100', 'Pengantar Kewirausahaan', 'P', 'PPKU'),
+('BIO100', 'Biologi', 'P', 'PPKU'),
+('BIO101', 'Biologi Umum', 'P', 'PPKU'),
+('EKO100', 'Ekonomi Umum', 'P', 'PPKU'),
+('FIS100', 'Fisika', 'P', 'PPKU'),
+('FIS101', 'Fisika Dasar I', 'P', 'PPKU'),
+('FIS103', 'Fisika Umum', 'P', 'PPKU'),
+('IPB100', 'Agama Islam', 'P', 'PPKU'),
+('IPB101', 'Agama Kristen Protestan', 'P', 'PPKU'),
+('IPB102', 'Agama Kristen Katolik', 'P', 'PPKU'),
+('IPB103', 'Agama Hindu', 'P', 'PPKU'),
+('IPB104', 'Agama Budha', 'P', 'PPKU'),
+('IPB106', 'Bahasa Indonesia', 'P', 'PPKU'),
+('IPB107', 'Pengantar Ilmu Pertanian', 'P', 'PPKU'),
+('IPB108', 'Bahasa Inggris', 'P', 'PPKU'),
+('IPB110', 'Agama Konghucu', 'P', 'PPKU'),
+('IPB111', 'Pendidikan Pancasila', 'P', 'PPKU'),
+('IPB112', 'Olahraga dan Seni', 'P', 'PPKU'),
+('KIM100', 'Kimia Umum', 'P', 'PPKU'),
+('KIM101', 'Kimia', 'P', 'PPKU'),
+('KIM102', 'Kimia Dasar I', 'P', 'PPKU'),
+('KOM101', 'Algoritme', 'G', 'G6'),
+('KOM209', 'Struktur Diskret', 'G', 'G6'),
+('KPM130', 'Sosiologi Umum', 'P', 'PPKU'),
+('MAT100', 'Pengantar Matematika', 'P', 'PPKU'),
+('MAT101', 'Landasan Matematika', 'P', 'PPKU'),
+('MAT103', 'Kalkulus', 'P', 'PPKU'),
+('MAT113', 'Kalkulus IA', 'P', 'PPKU'),
+('STK202', 'Pengantar Hitung Peluang', 'G', 'G1'),
+('STK211', 'Metode Statistika', 'G', 'G1');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `member`
+--
+
+CREATE TABLE `member` (
+  `id_kelas` int(12) NOT NULL,
+  `id_siswa` int(12) NOT NULL,
+  `id_tutor` int(12) NOT NULL,
+  `pesan` text NOT NULL,
+  `status` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -113,15 +261,29 @@ CREATE TABLE `users` (
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `type` int(1) NOT NULL
+  `type` int(1) NOT NULL,
+  `jk` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `telp` varchar(16) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `alamat` text COLLATE utf8mb4_unicode_ci,
+  `fakultas` text COLLATE utf8mb4_unicode_ci,
+  `departemen` text COLLATE utf8mb4_unicode_ci,
+  `picture` text COLLATE utf8mb4_unicode_ci,
+  `bio` text COLLATE utf8mb4_unicode_ci,
+  `tentang` text COLLATE utf8mb4_unicode_ci,
+  `jadwal` text COLLATE utf8mb4_unicode_ci,
+  `pengalaman` text COLLATE utf8mb4_unicode_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`, `type`) VALUES
-(2, 'melala', 'melati@gmail.com', '$2y$10$3xB1dmfdaDuF9ememdZETOzpEIoZvg1S1zG7bYx/S3W05n7WM.o/e', NULL, '2018-05-02 04:51:23', '2018-05-02 04:51:23', 2);
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`, `type`, `jk`, `telp`, `alamat`, `fakultas`, `departemen`, `picture`, `bio`, `tentang`, `jadwal`, `pengalaman`) VALUES
+(2, 'Melati Aulia Putri', 'melati@gmail.com', '$2y$10$3xB1dmfdaDuF9ememdZETOzpEIoZvg1S1zG7bYx/S3W05n7WM.o/e', 'lzHtyD69hgytPTifEiD4CnS7UDHEFE1LqadmTAAZkiqslDAfMfCtzEik5UrM', '2018-05-02 04:51:23', '2018-06-26 03:46:05', 2, 'Perempuan', '08192813213', 'Perwira', 'P', 'PPKU', '', 'aku melaaa', 'haiiiiiiiiiii', NULL, NULL),
+(3, 'Piped Ratnaputri', 'piped97@yahoo.com', '$2y$10$6T7rVR7K4EClswKo5IlMJ.teScDLy2wyHB022pyGfpFC1wZloE20K', 'IurXNb5G42mN2EctYvpytIdF1S4GoNAFDUdSN0bect09OSX32jsbdWvha8Qm', '2018-05-04 03:51:01', '2018-05-04 03:51:01', 1, '', '0', '', '', '', '', '', NULL, NULL, NULL),
+(4, 'Ratna Riskasari', 'ratnajunior@gmail.com', '$2y$10$7kBXHcgPs0eEHSIt6z6ivuKLZNGXpR5iqPVO1acnSfsclcpEfIu0K', 'jnENDNiknbPt1RhR2pHCvGcIgDmXDjF8fQ7MpMqnPrQAjkCX36O47R0VPyh6', '2018-05-04 03:51:51', '2018-05-04 03:51:51', 2, '', '0', '', '', '', '', '', NULL, NULL, NULL),
+(5, 'Wiandrini Anindita', 'wawdita@gmail.com', '$2y$10$ufmekE8D4iLPTdzKhFjlzud780MOONVDQusgayNQx7qvjN4JuI9om', 'G1GIxREkn2nzbLGyoCee37YG0nk3JCVUyemfMSfTkrd9I32rOa6BA7KKVrO7', '2018-06-26 02:44:18', '2018-06-26 02:58:34', 2, 'Perempuan', '08118728376', 'Russia', 'G', 'G6', NULL, 'hahahahhaaha', 'Saya tidak tahu.', NULL, NULL),
+(6, 'Kania West', 'kania@gmail.com', '$2y$10$SyJU8CBhgFai2Mu89NdQ5OU3tkfW6BRHC7YFDspwXG/ik5xP24zre', '75tWi9yJbvfwnPbfQSyjuLIDzVzrFyOTeHm5pOva4U9WkUVT6fPaJ8pQRXfy', '2018-06-26 03:03:55', '2018-06-26 03:10:12', 1, 'Perempuan', '081868263283', 'Dramaga Cantique', 'G', 'G6', NULL, NULL, NULL, NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -132,6 +294,26 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `creat
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`id_admin`);
+
+--
+-- Indexes for table `departemen`
+--
+ALTER TABLE `departemen`
+  ADD PRIMARY KEY (`id_departemen`),
+  ADD UNIQUE KEY `id_departemen` (`id_departemen`);
+
+--
+-- Indexes for table `kelas`
+--
+ALTER TABLE `kelas`
+  ADD PRIMARY KEY (`id_kelas`);
+
+--
+-- Indexes for table `mata_kuliah`
+--
+ALTER TABLE `mata_kuliah`
+  ADD PRIMARY KEY (`id_matakuliah`),
+  ADD UNIQUE KEY `id_matakuliah` (`id_matakuliah`);
 
 --
 -- Indexes for table `migrations`
@@ -149,7 +331,7 @@ ALTER TABLE `siswa`
 -- Indexes for table `tutor`
 --
 ALTER TABLE `tutor`
-  ADD PRIMARY KEY (`id_user_tutor`);
+  ADD UNIQUE KEY `id_user_tutor` (`id_user_tutor`);
 
 --
 -- Indexes for table `users`
@@ -167,6 +349,11 @@ ALTER TABLE `users`
 ALTER TABLE `admin`
   MODIFY `id_admin` int(10) NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT for table `kelas`
+--
+ALTER TABLE `kelas`
+  MODIFY `id_kelas` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+--
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
@@ -177,15 +364,10 @@ ALTER TABLE `migrations`
 ALTER TABLE `siswa`
   MODIFY `id_user_siswa` int(12) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `tutor`
---
-ALTER TABLE `tutor`
-  MODIFY `id_user_tutor` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
---
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

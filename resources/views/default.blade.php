@@ -13,20 +13,20 @@
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CVarela+Round" rel="stylesheet">
 
 	<!-- Bootstrap -->
-	<link type="text/css" rel="stylesheet" href="{{URL::to('/')}}/../web-tutorin-fix/css/bootstrap.min.css" />
+	<link type="text/css" rel="stylesheet" href="{{asset('web-tutorin-fix/css/bootstrap.min.css')}}" />
 
 	<!-- Owl Carousel -->
-	<link type="text/css" rel="stylesheet" href="{{URL::to('/')}}/../web-tutorin-fix/css/owl.carousel.css" />
-	<link type="text/css" rel="stylesheet" href="{{URL::to('/')}}/../web-tutorin-fix/css/owl.theme.default.css" />
+	<link type="text/css" rel="stylesheet" href="{{asset('web-tutorin-fix/css/owl.carousel.css')}}" />
+	<link type="text/css" rel="stylesheet" href="{{asset('web-tutorin-fix/css/owl.theme.default.css')}}" />
 
 	<!-- Magnific Popup -->
-	<link type="text/css" rel="stylesheet" href="{{URL::to('/')}}/../web-tutorin-fix/css/magnific-popup.css" />
+	<link type="text/css" rel="stylesheet" href="{{asset('web-tutorin-fix/css/magnific-popup.css')}}" />
 
 	<!-- Font Awesome Icon -->
-	<link rel="stylesheet" href="{{URL::to('/')}}/../web-tutorin-fix/css/font-awesome.min.css">
+	<link rel="stylesheet" href="{{asset('web-tutorin-fix/css/font-awesome.min.css')}}">
 
 	<!-- Custom stlylesheet -->
-	<link type="text/css" rel="stylesheet" href="{{URL::to('/')}}/../web-tutorin-fix/css/style.css" />
+	<link type="text/css" rel="stylesheet" href="{{asset('web-tutorin-fix/css/style.css')}}" />
 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -35,8 +35,11 @@
 		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<![endif]-->
 </head>
+<div class="section">
 
-@yield('content')
+				@yield('content')
+</div>
+
 
 <!-- Footer -->
 <footer id="footer" class="sm-padding bg-dark">
@@ -51,7 +54,7 @@
 
         <!-- footer logo -->
         <div class="footer-logo">
-          <a href="index.html"><img src="{{URL::to('/')}}/../web-tutorin-fix/img/logo1-alt.png" alt="logo"></a>
+          <a href="{{ url('/') }}"><img src="{{asset('web-tutorin-fix/img/logo1-alt.png')}}" alt="logo"></a>
         </div>
         <!-- /footer logo -->
 
@@ -91,11 +94,11 @@
 <!-- /Preloader -->
 
 <!-- jQuery Plugins -->
-<script type="text/javascript" src="{{URL::to('/')}}/../web-tutorin-fix/js/jquery.min.js"></script>
-<script type="text/javascript" src="{{URL::to('/')}}/../web-tutorin-fix/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="{{URL::to('/')}}/../web-tutorin-fix/js/owl.carousel.min.js"></script>
-<script type="text/javascript" src="{{URL::to('/')}}/../web-tutorin-fix/js/jquery.magnific-popup.js"></script>
-<script type="text/javascript" src="{{URL::to('/')}}/../web-tutorin-fix/js/main.js"></script>
+<script type="text/javascript" src="{{asset('web-tutorin-fix/js/jquery.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('web-tutorin-fix/js/bootstrap.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('web-tutorin-fix/js/owl.carousel.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('web-tutorin-fix/js/jquery.magnific-popup.js')}}"></script>
+<script type="text/javascript" src="{{asset('web-tutorin-fix/js/main.js')}}"></script>
 
 
 
