@@ -48,7 +48,7 @@ class HomeController extends Controller
     }
 
     public function showChangePasswordForm(){
-        return view('auth.changepassword');
+        return view('users.ubah-sandi');
     }
 
     public function changePassword(Request $request){

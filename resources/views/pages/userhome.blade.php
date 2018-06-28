@@ -16,15 +16,16 @@
                         <div class="card-two">
                             <header>
                                 <div class="avatar">
-                                    <img src="https://randomuser.me/api/portraits/women/21.jpg" alt="Allison Walker" />
+                                    <img src="/storage/{{ Auth::user()->picture }}" alt="{{Auth::user()->name}}" />
                                 </div>
                             </header>
 
                             <h3>{{$user -> name}}</h3>
                             <div class="desc">
-                                {{Auth::user() -> fakultas}}
-                                <br>{{Auth::user() -> departemen}}
-                                <br>{{Auth::user() -> type}}
+                                Fakultas {{Auth::user() -> fakultas}}
+                                <br>
+                                Departemen {{Auth::user() -> departemen}}
+
                             </div>
 
                         </div>
@@ -50,7 +51,7 @@
                                 <div class="card-body">
                                   <div class="m-t-20 row">
                                     <div class="col-md-2 col-xs-12">
-                                      <img src="https://randomuser.me/api/portraits/women/3.jpg" alt="user" class="img-responsive radius" />
+                                      <img src="/storage/{{ $aktifs->picture }}" alt="{{ $aktifs->name }}" class="img-responsive radius" />
                                     </div>
                                     <div class="col-md-10 col-xs-12">
                                       <h2> <strong>{{$aktifs->nama_matkul}}</strong> </h2>
@@ -76,7 +77,7 @@
                                   <div class="card-body">
                                     <div class="m-t-20 row">
                                       <div class="col-md-2 col-xs-12">
-                                        <img src="https://randomuser.me/api/portraits/women/3.jpg" alt="user" class="img-responsive radius" />
+                                        <img src="/storage/{{ $tunda_siswa->picture }}" alt="{{$tunda_siswa->name}}" class="img-responsive radius" />
                                       </div>
                                       <div class="col-md-10 col-xs-12">
                                         <h2> <strong>{{$tunda_siswa -> id_matakuliah}}</strong> </h2>
@@ -108,7 +109,7 @@
                                   <div class="card-body">
                                     <div class="m-t-20 row">
                                       <div class="col-md-2 col-xs-12">
-                                        <img src="https://randomuser.me/api/portraits/women/3.jpg" alt="user" class="img-responsive radius" />
+                                        <img src="/storage/{{ $hists->picture }}" alt="{{$hists->name}}" class="img-responsive radius" />
                                       </div>
                                       <div class="col-md-10 col-xs-12">
                                         <h2> <strong>{{$hists->nama_matkul}}</strong> </h2>
@@ -138,7 +139,7 @@
                             <div class="card-body">
                               <div class="m-t-20 row">
                                 <div class="col-md-2 col-xs-12">
-                                  <img src='/storage/avatars/{{$diterima -> picture}}' class="img-responsive radius" />
+                                  <img src='/storage/{{$diterima -> picture}}' class="img-responsive radius" />
                                 </div>
                                 <div class="col-md-10 col-xs-12">
                                   <h2> <strong>{{$diterima -> nama_matkul}}</strong> </h2>
@@ -162,7 +163,7 @@
                             <div class="card-body">
                               <div class="m-t-20 row">
                                 <div class="col-md-2 col-xs-12">
-                                  <img src='/storage/avatars/{{$ditunda -> picture}}' class="img-responsive radius" />
+                                  <img src='/storage/{{$ditunda -> picture}}' class="img-responsive radius" />
                                 </div>
                                 <div class="col-md-10 col-xs-12">
                                   <h2> <strong>{{$ditunda -> nama_matkul}}</strong> </h2>
@@ -186,7 +187,7 @@
                               </div>
                               @endif
                               <div class="text-center">
-                                <button type="button" onclick="window.location='{{ route('pages.cari-tutor') }}'" class="btn btn-success"><i class="ti-plus"></i>Cari Tutor</button>
+                                <button type="button" onclick="window.location='{{ route('cari-tutor') }}'" class="btn btn-success"><i class="ti-plus"></i>Cari Tutor</button>
                               </div>
                           </div>
                           <!-- Tab Histori Tutor -->
@@ -196,7 +197,7 @@
                             <div class="card-body">
                               <div class="m-t-20 row">
                                 <div class="col-md-2 col-xs-12">
-                                  <img src='/storage/avatars/{{$hist -> picture}}' class="img-responsive radius" />
+                                  <img src='/storage/{{$hist -> picture}}' class="img-responsive radius" />
                                 </div>
                                 <div class="col-md-10 col-xs-12">
                                   <h2> <strong>{{$hist -> nama_matkul}}</strong> </h2>

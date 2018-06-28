@@ -15,7 +15,7 @@
                                 <div class="card-two">
                                     <header>
                                         <div class="avatar">
-                                            <img src="https://randomuser.me/api/portraits/women/21.jpg"/>
+                                            <img src="/storage/{{ Auth::user()->picture }}"/>
                                         </div>
                                     </header>
 

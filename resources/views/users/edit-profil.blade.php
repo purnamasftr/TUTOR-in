@@ -1,6 +1,19 @@
 @extends('user-default')
+
         @section('content')
         <!-- Page wrapper  -->
+
+        @if(count($errors) > 0)
+          <div class="alert alert-danger">
+            <strong>Whooops!! </strong> There were some problems with your input.<br>
+            <ul>
+              @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+              @endforeach
+            </ul>
+          </div>
+        @endif
+
         <div class = "home-wrapper">
             <!-- Container fluid  -->
             <div class="container-fluid">
@@ -17,13 +30,12 @@
                               <div class="card-toggle-body">
                                 <div class="button-list">
                                   <div class="btn-group-vertical">
-                                      <button type="button" onclick="window.location='{{ route('users.edit-profil') }}'" class="btn btn-success">Profil</button>
-                                      <button type="button" onclick="window.location='{{ route('users.ubah-sandi') }}'" class="btn btn-success">Ubah Password</button>
-                                      @if( Auth::user()->type=='2' )
-                                      <button type="button" onclick="window.location='{{ route('kelas.index') }}'" class="btn btn-success">Kelas</button>
-                                      <button type="button" onclick="window.location='{{ route('users.edit-pengalaman') }}'" class="btn btn-success">Pengalaman</button>
-                                      
-                                      @endif
+                                    <button type="button" onclick="window.location='{{ route('users.edit-profil', Auth::user()->id)}}'" class="btn btn-success">Profil</button>
+                                    <button type="button" onclick="window.location='{{ route('picture.index')}}'" class="btn btn-success">Foto Profil</button>
+                                    <button type="button" onclick="window.location='{{ route('users.ubah-sandi') }}'" class="btn btn-success">Ubah Password</button>
+                                    @if( Auth::user()->type=='2' )
+                                    <button type="button" onclick="window.location='{{ route('kelas.index') }}'" class="btn btn-success">Kelas</button>
+                                    @endif
                                   </div>
                                 </div>
                               </div>
@@ -36,88 +48,82 @@
                                </div>
                                <div class="card-body">
                                    <div class="basic-form">
-                                       <form>
-                                         <div class="col-md-5">
-                                        <div class="text-center">
-                                          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5OXzJk62g-Kl3rwfBcKq0jllmtlM-4u68cNcW599fWrUVl708" class="avatar img-circle" alt="avatar">
-                                          <label> Upload Foto Profile </label>
-                                          <input type="file" class="form-control" required>
-                                        </div>
-                                       </div>
+                                       <form method="POST" action="{{route('users.update', $user)}}">
+                                         {{ csrf_field() }}
+                                         {{ method_field('patch') }}
+
                                          <div class="form-group">
                                              <label>Nama</label>
-                                             <input type="text" class="form-control" id="user" required>
+                                             <input type="text" name="name" class="form-control" value="{{ $user->name }}" />
                                          </div>
+
                                          <div class="form-group">
                                              <label>Jenis Kelamin</label>
-                                             <select class="form-control" id="jk">
-                                               <option selected> Pilih... </option>
-                                               <option> Laki-Laki </option>
-                                               <option> Perempuan </option>
+                                             <select name="jk" class="form-control">
+                                                 <option value="{{ $user->jk }}">--Jenis Kelamin--</option>
+                                                 <option value="Laki-laki"> Laki-laki</option>
+                                                 <option value="Perempuan"> Perempuan</option>
                                              </select>
                                          </div>
+
                                          <div class="form-row">
                                            <div class="col">
                                              <label>Fakultas</label>
-                                             <select class="form-control" id="fakultas">
-                                               <option selected> Pilih ... </option>
-                                               <option> FAPERTA </option>
-                                               <option> FKH </option>
-                                               <option> FPIK </option>
-                                               <option> FAPET </option>
-                                               <option> FAHUTAN </option>
-                                               <option> FATETA </option>
-                                               <option> FMIPA </option>
-                                               <option> FEM </option>
-                                               <option> FEMA </option>
-                                               <option> SEKOLAH BISNIS </option>
+                                             <select name="fakultas" id="fakultas" class="form-control dynamic">
+                                                 <option value="">--Select Fakultas--</option>
+                                                 @foreach ($fak as $fakultas => $value)
+                                                 <option value="{{ $fakultas }}"> {{ $value }}</option>
+                                                 @endforeach
                                              </select>
                                            </div>
 
                                            <div class="col">
                                               <label>Departemen</label>
-                                              <select class="form-control" id="dept">
-                                                <option selected> Pilih ... </option>
-                                                <option> Agribisnis </option>
-                                                <option> Agronomi dan Hortikultura </option>
-                                                <option> Aktuaria </option>
-                                                <option> Arsitektur Lanskap </option>
-                                                <option> Biokimia </option>
-                                                <option> Biologi </option>
-                                                <option> Bisnis </option>
-                                                <option> Fisika </option>
-                                                <option> Ilmu Gizi </option>
-                                                <option> Ilmu Keluarga dan Konsumen </option>
-                                                <option> Ilmu Komputer </option>
-                                                <option> Kedokteran Hewan </option>
-                                                <option> Manajemen </option>
-                                                <option> Manajemen Hutan </option>
-                                                <option> Proteksi Tanaman </option>
-                                                <option> Silvikultur </option>
-                                              </select>
+                                              <div class="form-group">
+                                                <select name="departemen" id="departemen" class="form-control dynamic">
+                                                  <option>--Select Departemen--</option>
+                                                </select>
+                                              </div>
                                            </div>
                                          </div>
+
                                          <div class="form-group">
                                           <label>Nomor HP</label>
-                                          <input type="number" class="form-control" id="nomor" required>
+                                          <input type="text" name="telp" class="form-control" value="{{ $user->telp }}" />
                                          </div>
+
                                          <div class="form-group">
                                              <label>Alamat Tempat Tinggal</label>
-                                             <input type="text" class="form-control" id="alamat" placeholder="Alamat" required>
+                                             <textarea rows="2" cols="65" name="alamat">{{ $user->alamat }}</textarea>
                                          </div>
+
+                                         @if( Auth::user()->type=='2' )
                                          <div class="form-group">
                                              <label>Biodata Singkat</label>
-                                             <input type="text" class="form-control" id="bio" placeholder=""></input>
+                                             <textarea rows="3" cols="65" name="bio">{{ $user->bio }}</textarea>
                                          </div>
+
                                          <div class="form-group">
                                            <label for="tentang">Tentang Saya</label>
-                                           <textarea class="form-control" id="tentang" rows="3"></textarea>
+                                           <textarea rows="4" cols="65" name="tentang"> {{ $user->tentang }}</textarea>
                                          </div>
+
                                          <div class="form-group">
-                                             <label>Foto KTM</label>
-                                             <input type="file" class="form-control" id="foto_ktm" required>
+                                             <label>Pengalaman Mengajar</label>
+                                             <textarea rows="4" cols="65" name="pengalaman" rows="3" >{{ $user->pengalaman }}</textarea>
                                          </div>
-                                         <button type="submit" class="btn btn-success ">Submit</button>
+
+                                         <div class="form-group">
+                                             <label>Riwayat Pendidikan</label>
+                                             <textarea rows="4" cols="65" name="riwayat" rows="3">{{ $user->riwayat }}</textarea>
+                                         </div>
+                                         @endif
+
+
+                                         <div class="form-group">
+                                           <a class="btn btn-success" href="{{ route('pages.userhome') }}">Back</a>
+                                           <button class="btn btn-primary" type="submit">Send</button>
+                                         </div>
 
                                        </form>
                                    </div>
@@ -135,4 +141,8 @@
             <!-- End Container fluid  -->
         </div>
         <!-- End Page wrapper  -->
+
+        <script src="{{ asset('js/app.js') }}"></script>
+        <script src="{{ asset('js/custom.js') }}"></script>
+
     @endsection

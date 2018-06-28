@@ -21,7 +21,6 @@
                                       <button type="button" onclick="window.location='{{ route('users.ubah-sandi') }}'" class="btn btn-success">Ubah Password</button>
                                       @if( Auth::user()->type=='2' )
                                       <button type="button" onclick="window.location='{{ route('kelas.index') }}'" class="btn btn-success">Kelas</button>
-                                      <button type="button" onclick="window.location='{{ route('users.edit-pengalaman') }}'" class="btn btn-success">Pengalaman</button>
                                       @endif
                                   </div>
                                 </div>
@@ -87,8 +86,8 @@
 
 
                                        <td>
-                                         <a class="btn btn-xs btn-primary" href="">Edit</a>
-                                         {!! Form::open(['method' => 'DELETE', 'style'=> 'display:inline']) !!}
+                                         <a class="btn btn-xs btn-primary" href="{{route('kelas.edit', $post->id_kelas)}}">Edit</a>
+                                         {!! Form::open(['method' => 'DELETE', 'route' => ['kelas.destroy', $post->id_kelas], 'style'=> 'display:inline']) !!}
                                          {!! Form::submit('Delete', ['class'=> 'btn btn-xs btn-danger']) !!}
                                          {!! Form::close() !!}
 

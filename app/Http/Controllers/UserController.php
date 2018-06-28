@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Item;
 
@@ -64,12 +65,11 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-     public function edit(User $user)
+     public function edit()
      {
          $user = Auth::user();
          $fak = DB::table('fakultas')->pluck('nama_fakultas', 'id_fakultas');
-
-         return view('users.edit', compact('user'), compact('fak'), compact('kelas'));
+         return view('users.edit-profil', compact('user'), compact('fak'));
      }
     /**
      * Update the specified resource in storage.
@@ -97,10 +97,11 @@ class UserController extends Controller
          $user->departemen = request('departemen');
          $user->bio = request('bio');
          $user->tentang = request('tentang');
+         $user->pengalaman = request('pengalaman');
+         $user->riwayat = request('riwayat');
 
          $user->save();
-
-         return redirect()->route('users.index')->with('success','Profile updated successfully');
+         return redirect()->route('users.edit-profil')->with('success','Profile updated successfully');
      }
     /**
      * Remove the specified resource from storage.
@@ -150,10 +151,6 @@ class UserController extends Controller
     public function EditProfil()
     {
         return view('users.edit-profil');
-    }
-    public function EditPengalaman()
-    {
-        return view('users.edit-pengalaman');
     }
     public function UbahSandi()
     {

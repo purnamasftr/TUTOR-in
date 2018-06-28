@@ -50,7 +50,7 @@
             <!-- Bread crumb -->
             <div class="row page-titles">
                 <div class="col-md-5 align-self-center">
-                    <h3 class="text-primary">Hasil Pencarian Tutor : Analisis Algoritma</h3>
+                    <h3 class="text-primary">Hasil Pencarian Tutor : <b> {{ $query }} </b></h3>
                 </div>
             </div>
             <!-- End Bread crumb -->
@@ -58,61 +58,40 @@
             <!-- Container fluid  -->
             <div class="container-fluid">
                 <!-- Start Page Content -->
-
-                <div class="basic-form">
-                  <form>
-                </div>
+              @if(isset($details))
 
                 <div class="row">
+                  @if ($details->count()>0)
+                  @foreach($details as $kelas)
                     <div class="col-lg-4">
                       <div class="card">
                           <div class="card-body">
                               <div class="card-two">
                                   <header>
                                       <div class="avatar">
-                                          <img src="https://randomuser.me/api/portraits/women/21.jpg" alt="Allison Walker" />
+                                          <img src="/storage/{{ $kelas->picture }}" alt="{{$kelas->name}}" />
                                       </div>
                                   </header>
 
-                                  <h3>{{$user -> name}}</h3>
+                                  <h3>{{$kelas -> name }}</h3>
                                   <div class="desc">
-                                        {{$user -> fakultas}} - {{$user -> departemen}}
+                                        <p>{{$kelas->id_departemen}}/{{$kelas->nama_departemen}}<p>
                                         <h4 class="text-primary font-weight-bold">
-                                            Rp 25.000/jam
+                                            Rp.{{$kelas->harga}}
                                         </h4>
-                                    <button class="btn btn-success" onclick="window.location='{{ url('/userhome') }}'"> Kunjungi Profil </button>
+                                    <a class="btn btn-success" href="{{ route('profil-tutor', $kelas->id_tutor) }}"> Kunjungi Profil </a>
                                   </div>
                                 </div>
                           </div>
                       </div>
                     </div>
-                    <div class="col-lg-4">
-                      <div class="card">
-                          <div class="card-body">
-                              <div class="card-two">
-                                  <header>
-                                      <div class="avatar">
-                                          <img src="https://randomuser.me/api/portraits/women/21.jpg" alt="Allison Walker" />
-                                      </div>
-                                  </header>
-
-                                  <h3>{{$user -> name}}</h3>
-                                  <div class="desc">
-                                        {{$user -> fakultas}} - {{$user -> departemen}}
-                                        <h4 class="text-primary font-weight-bold">
-                                            Rp 25.000/jam
-                                        </h4>
-                                    <button class="btn btn-success" onclick="window.location='{{ url('/userhome') }}'"> Kunjungi Profil </button>
-                                  </div>
-                                </div>
-                          </div>
-                      </div>
-                    </div>
-
-
+                  @endforeach
+                  @else
+                  a
+                  @endif
                 </div>
 
-
+              @endif
                 <!-- End PAge Content -->
             </div>
             <!-- End Container fluid  -->
