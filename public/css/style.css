@@ -1141,6 +1141,15 @@ h6.h1 {
   width: 30px;
   border-radius: 100%;
 }
+.header .profile-pic img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width: 100px;
+  height: auto;
+}
 .header .dropdown-menu {
   box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
   -webkit-box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
@@ -1355,7 +1364,8 @@ ul.list-style-none li a:hover {
   background: url("../../assets/images/custom-select.png") right 0.75rem center no-repeat;
 }
 textarea {
-  resize: none;
+  resize: vertical;
+  overflow: auto;
 }
 .mailbox ul li .drop-title {
   font-weight: 500;
@@ -1590,6 +1600,7 @@ textarea {
   font-size: 14px;
   white-space: nowrap;
 }
+
 .sidebar-nav ul li a:hover {
   color: #1976d2;
 }
@@ -2266,6 +2277,28 @@ textarea {
 .card-body {
   padding: 0;
 }
+.card-body .avatar {
+  position: absolute;
+  left: 50%;
+  margin-left: -50px;
+  z-index: 5;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #ccc;
+  border: 3px solid #fff;
+}
+.card-body .avatar img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width: 100px;
+  height: auto;
+}
+
 .card {
   background: #ffffff none repeat scroll 0 0;
   margin: 15px 0;

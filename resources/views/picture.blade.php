@@ -35,6 +35,7 @@
                                       <button type="button" onclick="window.location='{{ route('users.ubah-sandi') }}'" class="btn btn-success">Ubah Password</button>
                                       @if( Auth::user()->type=='2' )
                                       <button type="button" onclick="window.location='{{ route('kelas.index') }}'" class="btn btn-success">Kelas</button>
+                                      <button type="button" onclick="window.location='{{ route('profil-tutor', Auth::user()->id) }}'" class="btn btn-primary">Lihat Tampilan Saya</button>
                                       @endif
                                   </div>
                                 </div>
@@ -55,7 +56,9 @@
                                       <div class="form-group">
                                          <div class="col-md-5">
                                             <div class="text-center">
-                                              <img src="/storage/{{ $user->picture }}" class="avatar img-circle" height=200 weight=200/>
+                                              <div class="avatar">
+                                                <img src="/storage/{{ $user->picture }}" class="avatar img-circle" height=200 weight=200/>
+                                              </div>
                                               <label> Upload Foto Profile </label>
                                               <input type="file" class="form-control" name="picture" id="picture">
                                             </div>

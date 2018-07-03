@@ -18,9 +18,11 @@
                                 <div class="button-list">
                                   <div class="btn-group-vertical">
                                       <button type="button" onclick="window.location='{{ route('users.edit-profil') }}'" class="btn btn-success">Profil</button>
+                                      <button type="button" onclick="window.location='{{ route('picture.index')}}'" class="btn btn-success">Foto Profil</button>
                                       <button type="button" onclick="window.location='{{ route('users.ubah-sandi') }}'" class="btn btn-success">Ubah Password</button>
                                       @if( Auth::user()->type=='2' )
                                       <button type="button" onclick="window.location='{{ route('kelas.index') }}'" class="btn btn-success">Kelas</button>
+                                      <button type="button" onclick="window.location='{{ route('profil-tutor', Auth::user()->id) }}'" class="btn btn-primary">Lihat Tampilan Saya</button>
                                       @endif
                                   </div>
                                 </div>
@@ -61,8 +63,8 @@
                                         </div>
                                       </div>
                                       <div class="col-md-6 mb-3">
-                                        <label> Harga/jam </label><br>
-                                        <input type="text" name="harga" rows="3"></>
+                                        <label> Harga/jam </label>
+                                        <input type="text" class="form-control" name="harga" rows="3"></>
                                       </div>
                                       <button type="submit" class="btn btn-success">Submit</button>
                                  </form>

@@ -1490,7 +1490,54 @@ header {
     margin: 0;
 }
 
+/*------------------------------------*\
+	Footer
+\*------------------------------------*/
 
+#default-footer {
+    position: relative;
+}
+
+.default-footer-bg-dark {
+    background-color: #1C1D21;
+}
+.default-footer-logo {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.default-footer-logo>a>img {
+    max-height: 80px;
+}
+
+.default-footer-follow {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.default-footer-follow li {
+    display: inline-block;
+    margin-right: 10px;
+    margin-bottom: 13px;
+}
+
+.default-footer-follow li a {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  border-radius: 3px;
+  background-color: #6195FF;
+  color:#FFF;
+}
+
+.default-footer-copyright p {
+    text-align: center;
+    font-size: 14px;
+    text-transform: uppercase;
+    margin: 0;
+}
 /*------------------------------------*\
 	Responsive
 \*------------------------------------*/

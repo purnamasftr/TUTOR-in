@@ -40,18 +40,20 @@
                     <!-- Nav tabs -->
                     @if( Auth::user() -> type=='2' )
                         <ul class="nav nav-tabs profile-tab" role="tablist">
-                            <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#kelas-aktif" role="tab">Kelas Aktif</a> </li>
+                            <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#kelas-aktif" role="tab">Kelas Aktif</a> </li>
                             <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#permintaan-tutor" role="tab">Permintaan Tutor</a> </li>
                             <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#histori-kelas" role="tab">Histori Kelas</a> </li>
                         </ul>
                         <div class="tab-content">
-                            <div class="tab-pane" id="kelas-aktif" role="tabpanel">
+                            <div class="tab-pane active" id="kelas-aktif" role="tabpanel">
                               @foreach($aktif_s as $aktifs)
                               <div class="card-body">
                                 <div class="card-body">
                                   <div class="m-t-20 row">
                                     <div class="col-md-2 col-xs-12">
-                                      <img src="/storage/{{ $aktifs->picture }}" alt="{{ $aktifs->name }}" class="img-responsive radius" />
+                                      <div class="avatar">
+                                        <img src="/storage/{{ $aktifs->picture }}" alt="{{ $aktifs->name }}" class="img-responsive radius" />
+                                      </div>
                                     </div>
                                     <div class="col-md-10 col-xs-12">
                                       <h2> <strong>{{$aktifs->nama_matkul}}</strong> </h2>
@@ -77,7 +79,9 @@
                                   <div class="card-body">
                                     <div class="m-t-20 row">
                                       <div class="col-md-2 col-xs-12">
-                                        <img src="/storage/{{ $tunda_siswa->picture }}" alt="{{$tunda_siswa->name}}" class="img-responsive radius" />
+                                        <div class="avatar">
+                                          <img src="/storage/{{ $tunda_siswa->picture }}" alt="{{$tunda_siswa->name}}" class="img-responsive radius" />
+                                        </div>
                                       </div>
                                       <div class="col-md-10 col-xs-12">
                                         <h2> <strong>{{$tunda_siswa -> id_matakuliah}}</strong> </h2>
@@ -109,7 +113,9 @@
                                   <div class="card-body">
                                     <div class="m-t-20 row">
                                       <div class="col-md-2 col-xs-12">
-                                        <img src="/storage/{{ $hists->picture }}" alt="{{$hists->name}}" class="img-responsive radius" />
+                                        <div class="avatar">
+                                          <img src="/storage/{{ $hists->picture }}" alt="{{$hists->name}}" class="img-responsive radius" />
+                                        </div>
                                       </div>
                                       <div class="col-md-10 col-xs-12">
                                         <h2> <strong>{{$hists->nama_matkul}}</strong> </h2>
@@ -127,19 +133,21 @@
 
                     @else
                         <ul class="nav nav-tabs profile-tab" role="tablist">
-                            <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#tutor-aktif" role="tab">Tutor Aktif</a> </li>
+                            <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#tutor-aktif" role="tab">Tutor Aktif</a> </li>
                             <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#pengajuan-tutor" role="tab">Pengajuan Tutor</a> </li>
                             <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#histori-tutor" role="tab">Histori Tutor</a> </li>
                         </ul>
                         <div class="tab-content">
                           <!-- Tab Tutor Aktif -->
-                          <div class="tab-pane" id="tutor-aktif" role="tabpanel">
+                          <div class="tab-pane active" id="tutor-aktif" role="tabpanel">
                             @if ($acc->count())
                             @foreach($acc as $diterima)
                             <div class="card-body">
                               <div class="m-t-20 row">
                                 <div class="col-md-2 col-xs-12">
-                                  <img src='/storage/{{$diterima -> picture}}' class="img-responsive radius" />
+                                  <div class="avatar">
+                                    <img src='/storage/{{$diterima -> picture}}' class="img-responsive radius" />
+                                  </div>
                                 </div>
                                 <div class="col-md-10 col-xs-12">
                                   <h2> <strong>{{$diterima -> nama_matkul}}</strong> </h2>
@@ -151,7 +159,7 @@
                             @endforeach
                             @else
                             <div class="text-center">
-                              <p class=" text-center text-muted m-b-20"> Anda belum memiliki Tutor</p>
+                              <br><p class=" text-center text-muted m-b-20"> Anda belum memiliki Tutor</p>
                                 <img src="{{asset('images/sad-gray.png')}}" class="center" />
                             </div>
                             @endif
@@ -163,7 +171,9 @@
                             <div class="card-body">
                               <div class="m-t-20 row">
                                 <div class="col-md-2 col-xs-12">
-                                  <img src='/storage/{{$ditunda -> picture}}' class="img-responsive radius" />
+                                  <div class="avatar">
+                                    <img src='/storage/{{$ditunda -> picture}}' class="img-responsive radius" />
+                                  </div>
                                 </div>
                                 <div class="col-md-10 col-xs-12">
                                   <h2> <strong>{{$ditunda -> nama_matkul}}</strong> </h2>
@@ -181,7 +191,7 @@
                             @endforeach
                             @else
                               <div class="text-center">
-                                <p class=" text-center text-muted m-b-20"> Anda belum memiliki Tutor</p>
+                                <br><p class=" text-center text-muted m-b-20"> Anda belum memiliki Tutor</p>
                                 <img src="{{asset('images/sad-gray.png')}}" class="center" />
                                 <br><br>
                               </div>
@@ -197,7 +207,9 @@
                             <div class="card-body">
                               <div class="m-t-20 row">
                                 <div class="col-md-2 col-xs-12">
-                                  <img src='/storage/{{$hist -> picture}}' class="img-responsive radius" />
+                                  <div class="avatar">
+                                    <img src='/storage/{{$hist -> picture}}' class="img-responsive radius" />
+                                  </div>
                                 </div>
                                 <div class="col-md-10 col-xs-12">
                                   <h2> <strong>{{$hist -> nama_matkul}}</strong> </h2>

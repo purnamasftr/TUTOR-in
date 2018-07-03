@@ -39,33 +39,7 @@
                                   </div>
                                 </div>
                               </form>
-                              <form>
-                                <br>
-                                <a data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                                  Filter Tambahan <i class="ti-plus"></i>
-                                </a>
-                                <div class="collapse" id="collapseExample">
-                                  <br>
-                                  <div class="form-row">
-                                    <div class="col-md-6 mb-3">
-                                      <label >Kisaran Harga</label>
-                                      <select class="selectpicker" data-actions-box="true" data-width="400px" >
-                                        <option>option1</option>
-                                        <option>option2</option>
-                                        <option>option3</option>
-                                        <option>option4</option>
-                                      </select>
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                      <label>Jenis Kelamin Guru</label>
-                                      <select class="selectpicker" data-actions-box="true" data-width="400px" >
-                                        <option>Laki-Laki</option>
-                                        <option>Perempuan</option>
-                                      </select>
-                                    </div>
-                                  </div>
-                                </div>
-                              </form>
+                              
 
                             </div>
                         </div>

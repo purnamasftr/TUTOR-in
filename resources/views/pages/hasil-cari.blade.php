@@ -22,20 +22,7 @@
                             <option> Ilmu Komputer </option>
                           </select>
                         </li><br>
-                        <li class="nav-devider"></li>
-                        <li class="nav-label">Filter Tambahan</li>
-                        <li><a>Harga</a>
-                          <select class="selectpicker" data-width='auto' id="dept">
-                            <option selected> Pilih Harga... </option>
-                            <option> Ilmu Komputer </option>
-                          </select>
-                        </li>
-                        <li><a>Jenis Kelamin</a>
-                          <select class="selectpicker" data-width='auto' id="dept">
-                            <option selected> Pilih JK... </option>
-                            <option> Ilmu Komputer </option>
-                          </select>
-                        </li><br>
+
                         <li> <button type="submit" class="btn btn-success">Cari</button> </li>
                     </ul>
                   </form>
@@ -62,32 +49,31 @@
 
                 <div class="row">
                   @if ($details->count()>0)
-                  @foreach($details as $kelas)
-                    <div class="col-lg-4">
-                      <div class="card">
-                          <div class="card-body">
-                              <div class="card-two">
-                                  <header>
-                                      <div class="avatar">
-                                          <img src="/storage/{{ $kelas->picture }}" alt="{{$kelas->name}}" />
-                                      </div>
-                                  </header>
-
-                                  <h3>{{$kelas -> name }}</h3>
-                                  <div class="desc">
-                                        <p>{{$kelas->id_departemen}}/{{$kelas->nama_departemen}}<p>
-                                        <h4 class="text-primary font-weight-bold">
-                                            Rp.{{$kelas->harga}}
-                                        </h4>
-                                    <a class="btn btn-success" href="{{ route('profil-tutor', $kelas->id_tutor) }}"> Kunjungi Profil </a>
-                                  </div>
+                    @foreach($details as $kelas)
+                      <div class="col-lg-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card-two">
+                                    <header>
+                                        <div class="avatar">
+                                            <img src="/storage/{{ $kelas->picture }}" alt="{{$kelas->name}}" />
+                                        </div>
+                                    </header>
+                                    <h3>{{$kelas -> name }}</h3>
+                                    <div class="desc">
+                                          <p>{{$kelas->id_departemen}}/{{$kelas->nama_departemen}}<p>
+                                          <h4 class="text-primary font-weight-bold">
+                                              Rp.{{$kelas->harga}}
+                                          </h4>
+                                      <a class="btn btn-success" href="{{ route('profil-tutor', $kelas->id_tutor) }}"> Kunjungi Profil </a>
+                                    </div>
                                 </div>
-                          </div>
+                            </div>
+                        </div>
                       </div>
-                    </div>
-                  @endforeach
+                    @endforeach
                   @else
-                  a
+                  <!-- taro ui gitu buat kalo ga ada hasil -->
                   @endif
                 </div>
 

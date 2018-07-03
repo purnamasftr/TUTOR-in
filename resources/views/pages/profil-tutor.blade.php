@@ -22,7 +22,11 @@
                             <div class="desc">
                                 Fakultas {{$user -> nama_fakultas}}
                                 <br>Departemen {{$user -> nama_departemen}}
-                                <br><br><a href="javascript:;" data-toggle="modal" data-target="#detail-pesan-modal" class="btn btn-success"> Pesan Tutor</a>
+                                @if($user->type=='1')
+                                  <br><br><button type="button" onclick="window.location='{{ route('users.edit-profil')}}'" class="btn btn-info">Kembali</button>
+                                @else
+                                  <br><br><a href="javascript:;" data-toggle="modal" data-target="#detail-pesan-modal" class="btn btn-success"> Pesan Tutor</a>
+                                @endif
                             </div>
                             <div class="modal"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" id="detail-pesan-modal">
                                 <div class="modal-dialog" role="document">

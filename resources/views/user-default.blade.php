@@ -51,50 +51,14 @@
                     </ul>
                     <!-- User profile and search -->
                     <ul class="navbar-nav my-lg-0">
-                        <!-- Comment -->
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-muted text-muted  " href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-bell"></i>
-        								<div class="notify"> <span class="heartbit"></span> <span class="point"></span> </div>
-        							</a>
-                            <div class="dropdown-menu dropdown-menu-right mailbox animated zoomIn">
-                                <ul>
-                                    <li>
-                                        <div class="drop-title">Notifikasi</div>
-                                    </li>
-                                    <li>
-                                        <div class="message-center">
-                                            <!-- Message -->
-                                            <a href="#">
-                                                <div class="btn btn-success btn-circle m-r-10"><i class="ti-user"></i></div>
-                                                <div class="mail-contnet">
-                                                    <h5>Pengajuan Tutor Kamu sudah diterima!</h5> <span class="mail-desc">Klik disini untuk melihat detail</span> <span class="time">9:10 AM</span>
-                                                </div>
-                                            </a>
-                                            <a href="#">
-                                                <div class="btn btn-danger btn-circle m-r-10"><i class="ti-user"></i></div>
-                                                <div class="mail-contnet">
-                                                    <h5>Pengajuan Tutor Kamu ditolak</h5> <span class="mail-desc">Klik disini untuk melihat detail</span> <span class="time">9:10 AM</span>
-                                                </div>
-                                            </a>
-                                            <a href="#">
-                                                <div class="btn btn-warning btn-circle m-r-10"><i class="ti-user"></i></div>
-                                                <div class="mail-contnet">
-                                                    <h5>Ada permintaan Tutor baru!</h5> <span class="mail-desc">Klik disini untuk melihat detail</span> <span class="time">9:10 AM</span>
-                                                </div>
-                                            </a>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <a class="nav-link text-center" href="javascript:void(0);"> <strong>Cek seluruh notifikasi</strong> <i class="fa fa-angle-right"></i> </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <!-- End Comment -->
+
                         <!-- Profile -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-muted  " href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img src="/storage/{{ Auth::user()->picture }}" alt="user" class="profile-pic" /></a>
+
+                                <img src="/storage/{{ Auth::user()->picture }}" alt="user" class="profile-pic" />
+                              
+                            </a>
                             <div class="dropdown-menu dropdown-menu-right animated zoomIn">
                                 <ul class="dropdown-user">
                                     <li><a href="{{ url('/userhome') }}"><i class="ti-home"></i> Beranda</a></li>
@@ -136,7 +100,7 @@
                 <br>
                 <!-- footer logo -->
                 <div class="default-footer-logo">
-                  <a href="{{ url('/home') }}"><img src="{{asset('img/logo1-alt.png')}}" alt="logo"></a>
+                  <a href="{{ url('/') }}"><img src="{{asset('img/logo1-alt.png')}}" alt="logo"></a>
                 </div>
                 <!-- /footer logo -->
 

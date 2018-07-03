@@ -22,6 +22,7 @@
                                     <button type="button" onclick="window.location='{{ route('users.ubah-sandi') }}'" class="btn btn-success">Ubah Password</button>
                                     @if( Auth::user()->type=='2' )
                                     <button type="button" onclick="window.location='{{ route('kelas.index') }}'" class="btn btn-success">Kelas</button>
+                                    <button type="button" onclick="window.location='{{ route('profil-tutor', Auth::user()->id) }}'" class="btn btn-primary">Lihat Tampilan Saya</button>
                                     @endif
                                   </div>
                                 </div>
@@ -35,6 +36,16 @@
                            <div class="card">
                                <div class="card-body">
                                    <div class="basic-form">
+                                     @if (session('error'))
+                                        <div class="alert alert-danger">
+                                          {{ session ('error')}}
+                                        </div>
+                                     @endif
+                                        @if (session('success'))
+                                          <div class="alert alert-success">
+                                            {{ session('success')}}
+                                          </div>
+                                        @endif
                                        <form class="form-horizontal" method="POST" action="{{ route('changePassword') }}">
                                            {{ csrf_field() }}
                                          <div class="form-group{{ $errors->has('current-password') ? ' has-error' : '' }}">
@@ -60,7 +71,7 @@
                                          <div class="form-group">
                                              <label for="new-password-confirm" >Confirm New Password</label>
                                             <input id="new-password-confirm" type="password" class="form-control" name="new-password_confirmation" required>
-                                            >Whooops!!
+
                                          </div>
 
 

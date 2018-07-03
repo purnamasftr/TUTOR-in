@@ -1,4 +1,4 @@
-@extends('default')
+@extends('login-default')
 
 @section('content')
 <body>
