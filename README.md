@@ -1,4 +1,4 @@
-<h1 align="center"><img src="https://raw.githubusercontent.com/purnamasftr/TUTOR-in/master/web-tutorin-fix/img/logo1.png"></h1>
+<h1 align="center"><img src="https://raw.githubusercontent.com/purnamasftr/TUTOR-in/master/public/web-tutorin-fix/img/logo1.png"></h1>
 
 [Latar Belakang](#latar-belakang) | [Permasalahan](#permasalahan) | [Konfigurasi](#konfigurasi) | [Maintenance](#maintenance) | [Otomatisasi](#otomatisasi) |  [Cara Pemakaian](#cara-pemakaian) | [Pembahasan](#pembahasan) | [Referensi](#referensi)
 
