@@ -1,8 +1,13 @@
-@extends('layouts.app')
+
+
+@extends('login-default')
 
 @section('content')
 <div class="container">
-    <div class="row">
+    <div class="row sm-padding">
+        <div class="default-footer-logo">
+          <a href="{{ url('/') }}"><img src="{{asset('img/logo1.png')}}" alt="logo"></a>
+        </div>
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">Register</div>
@@ -38,13 +43,25 @@
                                 @endif
                             </div>
                         </div>
+                        <div class="form-group{{ $errors->has('type') ? ' has-error' : '' }}">
+                            <label for="type" class="col-md-4 control-label">Register sebagai</label>
 
+                            <div class="col-md-6">
+                                <input id="type" type="radio" name="type" value="1" required> Murid
+                                <input id="type" type="radio" name="type" value="2" required> Tutor
+
+                                @if ($errors->has('type'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('type') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                             <label for="password" class="col-md-4 control-label">Password</label>
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control" name="password" required>
-
                                 @if ($errors->has('password'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('password') }}</strong>
@@ -62,24 +79,8 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="type" class="col-md-4 control-label">Tipe Akun</label>
-
-                            <div class="col-md-6">
-                                <input id="type" type="radio" name="type" value="1" required> Tutor
-                                <input id="type" type="radio" name="type" value="2" required> Murid
-                            </div>
-                            @if ($errors->has('type'))
-                                <span class="help-block">
-                                    <strong>{{ $errors->first('type') }}</strong>
-                                </span>
-                            @endif
-                        </div>
-
-                        <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Register
-                                </button>
+                                <button type="submit"  class="btn btn-primary">Register</button>
                             </div>
                         </div>
                     </form>

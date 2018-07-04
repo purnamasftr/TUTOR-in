@@ -18,8 +18,12 @@ class RegisterController extends Controller
     | validation and creation. By default this controller uses a trait to
     | provide this functionality without requiring any additional code.
     |
-    */
+     */
 
+     public function index()
+     {
+         return view('register');
+     }
     use RegistersUsers;
 
     /**
@@ -27,7 +31,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/userhome';
 
     /**
      * Create a new controller instance.
@@ -45,6 +49,11 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
+
+    protected $fillable = [
+      'name', 'email', 'password', 'type',
+    ];
+
     protected function validator(array $data)
     {
         return Validator::make($data, [
@@ -67,7 +76,7 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
-            'type' => $data['type'],
+            'type' => $data['type']
         ]);
     }
 }

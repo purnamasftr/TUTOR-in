@@ -1,4 +1,4 @@
-@extends('default')
+@extends('login-default')
 
 @section('content')
 <body>
@@ -17,7 +17,7 @@
 				<div class="navbar-header">
 					<!-- Logo -->
 					<div class="navbar-brand">
-						<a href="index.html">
+						<a href="{{ url('/webhome') }}">
 							<img class="logo" src="{{URL::to('/')}}/../web-tutorin-fix/img/logo1.png" alt="logo">
 							<img class="logo-alt" src="{{URL::to('/')}}/../web-tutorin-fix/img/logo1-alt.png" alt="logo">
 						</a>
@@ -54,8 +54,18 @@
 							<h1 class="white-text">TUTOR-in</h1>
 							<p class="white-text">Platform pencarian tutor se-IPB
 							</p>
-							<button onclick="window.location='{{ route('pages.login') }}'" class="white-btn">Sign Up</button>
-							<button class="main-btn">Log In</button>
+
+
+              @if (Route::has('login'))
+                  @auth
+                      <div class="top-right links">
+                          <a</a>
+                      </div>
+              @else
+							        <button onclick="window.location='{{ route('pages.signup') }}'" class="main-btn">Sign Up</button>
+                      <button onclick="window.location='{{ route('pages.login') }}'" class="white-btn">Log In</button>
+                  @endauth
+              @endif
 						</div>
 					</div>
 					<!-- /home content -->

@@ -6,13 +6,31 @@ use App\Item;
 
 class WebController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+    }
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function WebHome()
     {
         return view('WebHome');
     }
-    public function WebLogin()
+    /**
+     * Show the my users page.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function WebUser()
     {
-        return view('/pages/login');
+        return view('WebUser');
     }
 
 }

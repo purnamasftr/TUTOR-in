@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+
+class TutorController extends Controller
+{
+    
+=======
 use App\Tutor;
 
 class TutorController extends Controller
@@ -105,4 +110,5 @@ class TutorController extends Controller
       Tutor::find($id_user_tutor)->delete();
       return redirect()->route('tutor.index')->with('success','Tutor deleted successfully');
     }
+
 }
