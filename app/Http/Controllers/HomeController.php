@@ -13,6 +13,7 @@ use Validator;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
+
 class HomeController extends Controller
 {
     /**
@@ -76,6 +77,7 @@ class HomeController extends Controller
         return redirect()->back()->with("success","Password changed successfully !");
 
     }
+
 
 
 

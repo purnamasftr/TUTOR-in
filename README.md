@@ -1,3 +1,18 @@
+<h1 align="center"><img src="https://raw.githubusercontent.com/purnamasftr/TUTOR-in/master/web-tutorin-fix/img/logo1.png"></h1>
+
+[Latar Belakang](#latar-belakang) | [Permasalahan](#permasalahan) | [Konfigurasi](#konfigurasi) | [Maintenance](#maintenance) | [Otomatisasi](#otomatisasi) |  [Cara Pemakaian](#cara-pemakaian) | [Pembahasan](#pembahasan) | [Referensi](#referensi)
+
+# Latar Belakang
+[`^ kembali ke atas ^`](#)
+
+  Institut Pertanian Bogor (IPB) merupakan salah satu kampus yang memungkinkan banyak mahasiswa dari departemen manapun dapat mengambil suatu mata kuliah yang berasal dari departemen lainnya. Pada umumnya, mahasiswa pasti memiliki kesulitan dalam memahami suatu mata kuliah tertentu. Belajar bersama kerap dilakukan agar dapat menguasai mata kuliah tersebut.
+	Beberapa mahasiswa terlihat sangat menguasai suatu mata kuliah dan beberapa mahasiswa lainnya terlihat kesulitan dalam memahami suatu mata kuliah, sehingga memerlukan tutor untuk membimbingnya agar lebih memahami mata kuliah yang tidak dimengerti. Namun, terbatasnya penyedia jasa tutor suatu mata kuliah bagi mahasiswa IPB menjadi salah satu faktor sulitnya mahasiswa dalam mencari bantuan pembelajaran mata kuliah tertentu. 
+Tutor-in dibuat untuk menghubungkan antara mahasiswa yang dapat menjadi tutor mata kuliah tertentu dengan mahasiswa yang membutuhkan bantuan pembelajaran. Dengan adanya website ini, proses belajar mengajar dapat lebih mudah dilakukan.
+
+
+
+
+
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
 <p align="center">
@@ -33,7 +48,10 @@ We would like to extend our thanks to the following sponsors for helping fund on
 
 - **[Vehikl](https://vehikl.com/)**
 - **[Tighten Co.](https://tighten.co)**
+
+=======
 - **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
+
 - **[British Software Development](https://www.britishsoftware.co)**
 - [Fragrantica](https://www.fragrantica.com)
 - [SOFTonSOFA](https://softonsofa.com/)
