@@ -9,6 +9,7 @@ class ProfileController extends Controller
 {
   public function ProfilTutor($id)
   {
+<<<<<<< HEAD
     $user = DB::table('users')->join('fakultas', 'fakultas.id_fakultas', '=', 'users.fakultas')
                               ->join('departemen', 'departemen.id_departemen', '=', 'users.departemen')
                                   ->where('id', '=', $id)

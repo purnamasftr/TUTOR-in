@@ -21,6 +21,7 @@
                             </header>
                             <h3>{{$user -> name}}</h3>
                             <div class="desc">
+<<<<<<< HEAD
                                 {{$user -> nama_fakultas}}
                                 <br>
                                 {{$user -> nama_departemen}}

@@ -55,6 +55,7 @@ class KelasController extends Controller
 
     public function destroy($id_kelas)
     {
+<<<<<<< HEAD
       if (Member::where('id_kelas',$id_kelas)->count()>0){
           Member::find($id_kelas)->delete();
       }

@@ -23,6 +23,7 @@
                             <div class="desc">
                                 {{$user->nama_fakultas}}
                                 <br>
+<<<<<<< HEAD
                                 {{$user->nama_departemen}}
 =======
                                 Departemen {{Auth::user() -> departemen}}
