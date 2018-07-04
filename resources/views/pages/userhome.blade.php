@@ -23,11 +23,7 @@
                             <div class="desc">
                                 {{$user->nama_fakultas}}
                                 <br>
-<<<<<<< HEAD
                                 {{$user->nama_departemen}}
-=======
-                                Departemen {{Auth::user() -> departemen}}
->>>>>>> 2ffbfe0ea9b094f202549a0c7a395c1017c2026c
                             </div>
                         </div>
                     </div>
