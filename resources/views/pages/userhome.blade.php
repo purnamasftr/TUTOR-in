@@ -19,15 +19,12 @@
                                     <img src="/storage/{{ Auth::user()->picture }}" alt="{{Auth::user()->name}}" />
                                 </div>
                             </header>
-
                             <h3>{{$user -> name}}</h3>
                             <div class="desc">
                                 Fakultas {{Auth::user() -> fakultas}}
                                 <br>
                                 Departemen {{Auth::user() -> departemen}}
-
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -86,6 +83,7 @@
                                       <div class="col-md-10 col-xs-12">
                                         <h2> <strong>{{$tunda_siswa -> id_matakuliah}}</strong> </h2>
                                         <h4> Murid : {{$tunda_siswa -> name}}</strong> </h4>
+                                        <p> Pesan : {{$tunda_siswa -> pesan}}</p>
                                         <div class="m-t-20 row">
                                           <div class="col-md-2 col-xs-12">
                                             <form method="post" action="{{route('member.update', $tunda_siswa -> id_member)}}">
@@ -184,6 +182,7 @@
                                 <div class="col-md-10 col-xs-12">
                                   <h2> <strong>{{$ditunda -> nama_matkul}}</strong> </h2>
                                   <h4> Tutor : {{$ditunda -> name}}</strong> </h2>
+                                  <p> Pesan : {{$ditunda -> pesan}}</p>
                                   <form method="post" action="{{route('member.update', $ditunda -> id_member)}}">
                                     {{ csrf_field() }}
                                     {{ method_field('patch') }}

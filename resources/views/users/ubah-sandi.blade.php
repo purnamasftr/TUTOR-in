@@ -1,6 +1,18 @@
 @extends('user-default')
         @section('content')
         <!-- Page wrapper  -->
+
+        @if(count($errors) > 0)
+          <div class="alert alert-danger">
+            <strong>Whooops!! </strong> There were some problems with your input.<br>
+            <ul>
+              @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+              @endforeach
+            </ul>
+          </div>
+        @endif
+        <!-- Page wrapper  -->
         <div class = "home-wrapper">
             <!-- Container fluid  -->
             <div class="container-fluid">
@@ -19,7 +31,7 @@
                                   <div class="btn-group-vertical">
                                     <button type="button" onclick="window.location='{{ route('users.edit-profil', Auth::user()->id)}}'" class="btn btn-success">Profil</button>
                                     <button type="button" onclick="window.location='{{ route('picture.index')}}'" class="btn btn-success">Foto Profil</button>
-                                    <button type="button" onclick="window.location='{{ route('users.ubah-sandi') }}'" class="btn btn-success">Ubah Password</button>
+                                    <button type="button" onclick="window.location='{{ route('users.ubah-sandi') }}'" class="btn btn-info">Ubah Password</button>
                                     @if( Auth::user()->type=='2' )
                                     <button type="button" onclick="window.location='{{ route('kelas.index') }}'" class="btn btn-success">Kelas</button>
                                     <button type="button" onclick="window.location='{{ route('profil-tutor', Auth::user()->id) }}'" class="btn btn-primary">Lihat Tampilan Saya</button>

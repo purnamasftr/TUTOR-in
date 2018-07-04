@@ -17,7 +17,7 @@
 				<div class="navbar-header">
 					<!-- Logo -->
 					<div class="navbar-brand">
-						<a href="{{ url('/webhome') }}">
+						<a >
 							<img class="logo" src="{{URL::to('/')}}/../web-tutorin-fix/img/logo1.png" alt="logo">
 							<img class="logo-alt" src="{{URL::to('/')}}/../web-tutorin-fix/img/logo1-alt.png" alt="logo">
 						</a>

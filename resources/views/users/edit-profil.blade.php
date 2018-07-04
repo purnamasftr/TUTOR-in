@@ -30,7 +30,7 @@
                               <div class="card-toggle-body">
                                 <div class="button-list">
                                   <div class="btn-group-vertical">
-                                    <button type="button" onclick="window.location='{{ route('users.edit-profil')}}'" class="btn btn-success">Profil</button>
+                                    <button type="button" onclick="window.location='{{ route('users.edit-profil')}}'" class="btn btn-info">Profil</button>
                                     <button type="button" onclick="window.location='{{ route('picture.index')}}'" class="btn btn-success">Foto Profil</button>
                                     <button type="button" onclick="window.location='{{ route('users.ubah-sandi') }}'" class="btn btn-success">Ubah Password</button>
                                     @if( Auth::user()->type=='2' )
@@ -90,7 +90,7 @@
 
                                          <div class="form-group">
                                           <label>Nomor HP</label>
-                                          <input type="text" name="telp" class="form-control" value="{{ $user->telp }}" />
+                                          <input type="number" min="0" name="telp" class="form-control" maxlength="12" value="{{ $user->telp }}" />
                                          </div>
 
                                          <div class="form-group">
@@ -121,12 +121,9 @@
 
                                          <div class="form-group">
                                            <label for="tentang">Jadwal</label>
-                                           <textarea rows="4" class="textarea_editor form-control" style="height:100px" name="jadwal">
-                                              {{ $user->jadwal }}
-                                           </textarea>
+                                           <textarea rows="4" class="textarea_editor form-control" style="height:100px" name="jadwal">{{ $user->jadwal }}</textarea>
                                          </div>
                                          @endif
-
 
                                          <div class="form-group">
                                            <a class="btn btn-success" href="{{ route('pages.userhome') }}">Back</a>
@@ -149,8 +146,4 @@
             <!-- End Container fluid  -->
         </div>
         <!-- End Page wrapper  -->
-
-        <script src="{{ asset('js/app.js') }}"></script>
-        <script src="{{ asset('js/custom.js') }}"></script>
-
     @endsection

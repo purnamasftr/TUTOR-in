@@ -8,7 +8,8 @@
         <!-- Start Page Content -->
         <!-- Start Page Content -->
         <div class="row">
-            <!-- Column -->
+          @if((Auth::user()->id==$user->id AND $user->type==2) OR (Auth::user()->type==1 AND $user->type==2))
+            <!-- Kepala Profilnya -->
             <div class="col-lg-12">
               <div class="card">
                     <div class="card-body">
@@ -21,7 +22,8 @@
                             <h3>{{$user -> name}}</h3>
                             <div class="desc">
                                 Fakultas {{$user -> nama_fakultas}}
-                                <br>Departemen {{$user -> nama_departemen}}
+                                <br>
+                                Departemen {{$user -> nama_departemen}}
                                 @if(Auth::user()->type=='2')
                                   <br><br><button type="button" onclick="window.location='{{ route('users.edit-profil')}}'" class="btn btn-info">Kembali</button>
                                 @else
@@ -86,15 +88,13 @@
                     </div>
                 </div>
             </div>
-            <!-- Column -->
-            <!-- Column -->
+            <!-- Tabpane -->
             <div class="col-lg-12">
               <div class="card">
                     <!-- Nav tabs -->
                     <ul class="nav nav-tabs profile-tab" role="tablist">
                         <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#tentang" role="tab">Tentang</a> </li>
                         <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#matakuliah" role="tab">Mata Kuliah</a> </li>
-                        <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#testimoni" role="tab">Testimoni</a> </li>
                     </ul>
                     <!-- Tab panes -->
                     <div class="tab-content">
@@ -171,63 +171,21 @@
                               </div>
                             </div>
                         </div>
-                        <!--Tab Testimoni-->
-                        <div class="tab-pane" id="testimoni" role="tabpanel">
-                            <div class="card-body">
-                              <div class="card-body">
-                                <div class="profiletimeline">
-                                    <div class="sl-item">
-                                        <div class="sl-left"> <img src="{{URL::to('/')}}/../user-tutor/images/users/avatar-2.jpg" alt="user" class="img-circle" /> </div>
-                                        <div class="sl-right">
-                                            <div> <a href="#" class="link">Velia Deby Rahmawati</a> <span class="sl-date">17 September 2017</span>
-                                              <div>
-                                                  <small>Mata Kuliah : <cite title="Source Title">Analisis Algoritme</cite></small>
-                                              </div>
-                                              <div class="m-t-20 row">
-                                                    <div class="col-md-9 col-xs-12">
-                                                        <blockquote class="m-t-10"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. </blockquote>
-                                                    </div>
-                                              </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <hr>
-                                    <div class="sl-item">
-                                        <div class="sl-left"> <img src="{{URL::to('/')}}/../user-tutor/images/users/avatar-3.jpg" alt="user" class="img-circle" /> </div>
-                                        <div class="sl-right">
-                                            <div><a href="#" class="link">Riska Ratnasari</a> <span class="sl-date">18 November 2017</span>
-                                              <div class="starrating risingstar d-flex justify-content-start flex-row">
-
-                                              </div>
-                                                <blockquote class="m-t-10"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum.
-                                                    Praesent mauris. Fusce nec tellus sed augue semper </blockquote>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <hr>
-                                    <div class="sl-item">
-                                        <div class="sl-left"> <img src="{{URL::to('/')}}/../user-tutor/images/users/avatar-4.jpg" alt="user" class="img-circle" /> </div>
-                                        <div class="sl-right">
-                                            <div><a href="#" class="link">Juan Josua</a> <span class="sl-date">5 minutes ago</span>
-                                              <div class="starrating risingstar d-flex justify-content-start flex-row">
-
-                                              </div>
-                                                <blockquote class="m-t-10">
-                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
-                                                </blockquote>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                              </div>
-                              <hr>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
-            <!-- Column -->
+          @else
+          <div class="col-lg-12">
+            <div class="card">
+              <div class="text-center">
+                  <h1>404</h1>
+                  <h3 class="text-uppercase">Page not found </h3>
+                  <p class="text-muted m-t-30 m-b-30">Please try after some time</p>
+                  <button class="btn btn-info btn-rounded waves-effect waves-light m-b-40" onclick="window.location='{{ url('/userhome') }}'">Back to home</button>
+              </div>
+            </div>
+          </div>
+          @endif
         </div>
 
         <!-- End Page Content -->
