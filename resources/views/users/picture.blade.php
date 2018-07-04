@@ -31,7 +31,7 @@
                                 <div class="button-list">
                                   <div class="btn-group-vertical">
                                       <button type="button" onclick="window.location='{{ route('users.edit-profil', Auth::user()->id)}}'" class="btn btn-success">Profil</button>
-                                      <button type="button" onclick="window.location='{{ route('picture.index')}}'" class="btn btn-info">Foto Profil</button>
+                                      <button type="button" onclick="window.location='{{ route('picture.index')}}'" class="btn btn-success">Foto Profil</button>
                                       <button type="button" onclick="window.location='{{ route('users.ubah-sandi') }}'" class="btn btn-success">Ubah Password</button>
                                       @if( Auth::user()->type=='2' )
                                       <button type="button" onclick="window.location='{{ route('kelas.index') }}'" class="btn btn-success">Kelas</button>
@@ -83,4 +83,8 @@
             <!-- End Container fluid  -->
         </div>
         <!-- End Page wrapper  -->
+
+        <script src="{{ asset('js/app.js') }}"></script>
+        <script src="{{ asset('js/custom.js') }}"></script>
+
     @endsection

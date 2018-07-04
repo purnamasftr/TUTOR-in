@@ -57,7 +57,7 @@
                             <a class="nav-link dropdown-toggle text-muted  " href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
                                 <img src="/storage/{{ Auth::user()->picture }}" alt="user" class="profile-pic" />
-                              
+
                             </a>
                             <div class="dropdown-menu dropdown-menu-right animated zoomIn">
                                 <ul class="dropdown-user">
@@ -100,7 +100,7 @@
                 <br>
                 <!-- footer logo -->
                 <div class="default-footer-logo">
-                  <a href="{{ url('/') }}"><img src="{{asset('img/logo1-alt.png')}}" alt="logo"></a>
+                  <a href="{{ url('/userhome') }}"><img src="{{asset('img/logo1-alt.png')}}" alt="logo"></a>
                 </div>
                 <!-- /footer logo -->
 
