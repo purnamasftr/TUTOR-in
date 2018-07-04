@@ -30,7 +30,7 @@
                               <div class="card-toggle-body">
                                 <div class="button-list">
                                   <div class="btn-group-vertical">
-                                    <button type="button" onclick="window.location='{{ route('users.edit-profil')}}'" class="btn btn-success">Profil</button>
+                                    <button type="button" onclick="window.location='{{ route('users.edit-profil')}}'" class="btn btn-info">Profil</button>
                                     <button type="button" onclick="window.location='{{ route('picture.index')}}'" class="btn btn-success">Foto Profil</button>
                                     <button type="button" onclick="window.location='{{ route('users.ubah-sandi') }}'" class="btn btn-success">Ubah Password</button>
                                     @if( Auth::user()->type=='2' )
@@ -71,7 +71,7 @@
                                            <div class="col">
                                              <label>Fakultas</label>
                                              <select name="fakultas" id="fakultas" class="form-control dynamic">
-                                                 <option value="">--Select Fakultas--</option>
+                                                 <option value="{{$user -> fakultas}}">--Select Fakultas--</option>
                                                  @foreach ($fak as $fakultas => $value)
                                                  <option value="{{ $fakultas }}"> {{ $value }}</option>
                                                  @endforeach
@@ -82,7 +82,7 @@
                                               <label>Departemen</label>
                                               <div class="form-group">
                                                 <select name="departemen" id="departemen" class="form-control dynamic">
-                                                  <option>--Select Departemen--</option>
+                                                  <option value="{{$user -> departemen}}">--Select Departemen--</option>
                                                 </select>
                                               </div>
                                            </div>
@@ -90,7 +90,7 @@
 
                                          <div class="form-group">
                                           <label>Nomor HP</label>
-                                          <input type="text" name="telp" class="form-control" value="{{ $user->telp }}" />
+                                          <input type="number" min="0" name="telp" class="form-control" maxlength="12" value="{{ $user->telp }}" />
                                          </div>
 
                                          <div class="form-group">
@@ -118,8 +118,12 @@
                                              <label>Riwayat Pendidikan</label>
                                              <textarea rows="4" class="textarea_editor form-control" style="height:100px" name="riwayat" rows="3">{{ $user->riwayat }}</textarea>
                                          </div>
-                                         @endif
 
+                                         <div class="form-group">
+                                           <label for="tentang">Jadwal</label>
+                                           <textarea rows="4" class="textarea_editor form-control" style="height:100px" name="jadwal">{{ $user->jadwal }}</textarea>
+                                         </div>
+                                         @endif
 
                                          <div class="form-group">
                                            <a class="btn btn-success" href="{{ route('pages.userhome') }}">Back</a>
@@ -142,8 +146,4 @@
             <!-- End Container fluid  -->
         </div>
         <!-- End Page wrapper  -->
-
-        <script src="{{ asset('js/app.js') }}"></script>
-        <script src="{{ asset('js/custom.js') }}"></script>
-
     @endsection
