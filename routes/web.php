@@ -14,13 +14,17 @@ Route::get('/userhome', 'UserHomeController@UserHome')->name('pages.userhome');
 Route::get('/cari-tutor',array('uses' => 'UserHomeController@CariTutor', 'as' => 'cari-tutor'));
 Route::any('/search',function(){
     $q = Input::get ( 'id_matakuliah' );
+    $a = DB::table('mata_kuliah')->where('id_matakuliah', '=', $q);
+    if(count($a)>0){
+      $user = DB::table('kelas')->join('users', 'users.id', '=', 'kelas.id_tutor')
+                                ->join('departemen', 'users.departemen', '=', 'departemen.id_departemen')
+                                ->where('id_matakuliah','LIKE','%'.$q.'%')->get();
+      $faku = DB::table('fakultas')->pluck('nama_fakultas','id_fakultas');
+    }
 
-    $user = DB::table('kelas')->join('users', 'users.id', '=', 'kelas.id_tutor')
-                              ->join('departemen', 'users.departemen', '=', 'departemen.id_departemen')
-                              ->where('id_matakuliah','LIKE','%'.$q.'%')->get();
 
     // if(count($user) > 0){
-        return view('pages.hasil-cari')->withDetails($user)->withQuery ( $q );
+        return view('pages.hasil-cari')->withDetails($user)->withQuery ( $q )->withFakult($faku);
     // }
     // else
     //     return view ('pages.hasil-cari')->withMessage('No Details found. Try to search again !');
@@ -29,8 +33,8 @@ Route::get('autocomplete',array('as'=>'autocomplete','uses'=>'AutoCompleteContro
 Route::get('searchajax',array('as'=>'searchajax','uses'=>'AutoCompleteController@autoComplete'));
 
 /* Login, Log Out, Sign Up Controller */
-Route::get('/web-login', array('uses' => 'WebhomeController@WebLogin', 'as' => 'pages.login'));
-Route::get('/web-signup', array('uses' => 'WebhomeController@WebSignup', 'as' => 'pages.signup'));
+// Route::get('/web-login', array('uses' => 'WebhomeController@WebLogin', 'as' => 'pages.login'));
+// Route::get('/web-signup', array('uses' => 'WebhomeController@WebSignup', 'as' => 'pages.signup'));
 Route ::get('/logout', function(){
 Auth::logout();
   return redirect('/');
@@ -61,3 +65,7 @@ Route::get('departemen/get/{id}', 'HomeController@getDept');
 //Member Route
 Route::resource('member', 'MemberController');
 Route::get('member/{id}',  ['as' => 'member.update', 'uses' => 'MemberController@update']);
+
+Route::get('error404', function(){
+    return view('error404');
+});

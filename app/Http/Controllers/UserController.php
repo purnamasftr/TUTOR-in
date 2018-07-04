@@ -99,6 +99,7 @@ class UserController extends Controller
          $user->tentang = request('tentang');
          $user->pengalaman = request('pengalaman');
          $user->riwayat = request('riwayat');
+         $user->jadwal = request('jadwal');
 
          $user->save();
          return redirect()->route('users.edit-profil')->with('success','Profile updated successfully');

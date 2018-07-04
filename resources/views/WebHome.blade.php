@@ -60,10 +60,11 @@
                   @auth
                       <div class="top-right links">
                           <a</a>
+													<button onclick="window.location='{{ url('/userhome') }}'" class="white-btn">Homepage</button>
                       </div>
               @else
-							        <button onclick="window.location='{{ route('pages.signup') }}'" class="main-btn">Sign Up</button>
-                      <button onclick="window.location='{{ route('pages.login') }}'" class="white-btn">Log In</button>
+							        <button onclick="window.location='{{ route('register') }}'" class="main-btn">Sign Up</button>
+                      <button onclick="window.location='{{ route('login') }}'" class="white-btn">Log In</button>
                   @endauth
               @endif
 						</div>

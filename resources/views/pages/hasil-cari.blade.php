@@ -6,20 +6,30 @@
             <div class="scroll-sidebar">
                 <!-- Sidebar navigation-->
                 <nav class="sidebar-nav">
-                  <form>
+                  <form action="search" method="POST" role="search">
+                      {{ csrf_field() }}
                     <ul id="sidebarnav">
                         <li class="nav-devider"></li>
                         <li class="nav-label">Pengaturan</li>
-                        <li><a>Departemen</a>
-                          <select class="selectpicker" data-width='auto' id="dept">
-                            <option selected> Pilih Departemen... </option>
-                            <option> Ilmu Komputer </option>
+                        <li><a>Fakultas</a>
+                          <select  name="fakultas" id="fakultas" class="form-control dynamic">
+                            <option value="">--pilih fakultas--</option>
+                            @foreach ($fakult as $fakultas => $value)
+                            <option value="{{ $fakultas }}"> {{ $value }}</option>
+                            @endforeach
                           </select>
                         </li>
+                        <li><a>Departemen</a>
+                          <select  name="departemen" id="departemen" class="form-control dynamic">
+                            <option value="">--pilih departemen--</option>
+
+                          </select>
+                        </li><br>
                         <li><a>Mata Kuliah</a>
-                          <select class="selectpicker" data-width='auto' id="dept">
-                            <option selected> Pilih Mata Kuliah... </option>
-                            <option> Ilmu Komputer </option>
+                          <select  name="id_matakuliah"
+                            placeholder="Search kelas" id="matkul" class="form-control dynamic">
+                            <option value="">--pilih matakuliah--</option>
+
                           </select>
                         </li><br>
 

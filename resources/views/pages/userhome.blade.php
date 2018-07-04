@@ -86,18 +86,24 @@
                                       <div class="col-md-10 col-xs-12">
                                         <h2> <strong>{{$tunda_siswa -> id_matakuliah}}</strong> </h2>
                                         <h4> Murid : {{$tunda_siswa -> name}}</strong> </h4>
-                                        <form method="post" action="{{route('member.update', $tunda_siswa -> id_member)}}">
-                                          {{ csrf_field() }}
-                                          {{ method_field('patch') }}
-                                          <input type="hidden" value="2" name="status"/>
-                                          <button class="btn btn-success"> Terima</a>
-                                        </form>
-                                        <form method="post" action="{{route('member.update', $tunda_siswa -> id_member)}}">
-                                          {{ csrf_field() }}
-                                          {{ method_field('patch') }}
-                                          <input type="hidden" value="4" name="status"/>
-                                          <button class="btn btn-danger"> Tolak</a>
-                                        </form>
+                                        <div class="m-t-20 row">
+                                          <div class="col-md-2 col-xs-12">
+                                            <form method="post" action="{{route('member.update', $tunda_siswa -> id_member)}}">
+                                              {{ csrf_field() }}
+                                              {{ method_field('patch') }}
+                                              <input type="hidden" value="2" name="status"/>
+                                              <button class="btn btn-success"> Terima</a>
+                                            </form>
+                                          </div>
+                                          <div class="col-md-0 col-xs-12">
+                                            <form method="post" action="{{route('member.update', $tunda_siswa -> id_member)}}">
+                                              {{ csrf_field() }}
+                                              {{ method_field('patch') }}
+                                              <input type="hidden" value="4" name="status"/>
+                                              <button class="btn btn-danger"> Tolak</a>
+                                            </form>
+                                          </div>
+                                        </div>
                                       </div>
                                     </div>
                                   </div>

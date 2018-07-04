@@ -79,6 +79,9 @@ class UserHomeController extends Controller
                                         ->where('id_matakuliah', 'LIKE', '%' . $query . '%')->paginate(6);
         $hasil = User::where('name', 'LIKE', '%' . $query . '%')->paginate(6);
 
+
+
+
         return view('pages.hasil-cari', compact('kelas_tutor', 'query'));
     }
     public function showChangePasswordForm(){

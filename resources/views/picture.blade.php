@@ -56,9 +56,7 @@
                                       <div class="form-group">
                                          <div class="col-md-5">
                                             <div class="text-center">
-                                              <div class="avatar">
-                                                <img src="/storage/{{ $user->picture }}" class="avatar img-circle" height=200 weight=200/>
-                                              </div>
+                                                <img src="/storage/{{ $user->picture }}" class="img-circle" height=200 weight=200/>
                                               <label> Upload Foto Profile </label>
                                               <input type="file" class="form-control" name="picture" id="picture">
                                             </div>
