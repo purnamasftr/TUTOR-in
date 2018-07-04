@@ -24,6 +24,11 @@
                                 {{$user -> nama_fakultas}}
                                 <br>
                                 {{$user -> nama_departemen}}
+=======
+                                Fakultas {{$user -> nama_fakultas}}
+                                <br>
+                                Departemen {{$user -> nama_departemen}}
+>>>>>>> 2ffbfe0ea9b094f202549a0c7a395c1017c2026c
                                 @if(Auth::user()->type=='2')
                                   <br><br><button type="button" onclick="window.location='{{ route('users.edit-profil')}}'" class="btn btn-info">Kembali</button>
                                 @else
